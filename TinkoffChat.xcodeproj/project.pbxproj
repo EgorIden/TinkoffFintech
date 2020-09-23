@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7444F792250F399B00F2C07D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7444F791250F399B00F2C07D /* AppDelegate.swift */; };
-		7444F796250F399B00F2C07D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7444F795250F399B00F2C07D /* ViewController.swift */; };
+		7444F796250F399B00F2C07D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7444F795250F399B00F2C07D /* ProfileViewController.swift */; };
 		7444F799250F399B00F2C07D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7444F797250F399B00F2C07D /* Main.storyboard */; };
 		7444F79B250F399E00F2C07D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7444F79A250F399E00F2C07D /* Assets.xcassets */; };
 		7444F79E250F399E00F2C07D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7444F79C250F399E00F2C07D /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		7444F78E250F399B00F2C07D /* TinkoffChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7444F791250F399B00F2C07D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7444F795250F399B00F2C07D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7444F795250F399B00F2C07D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7444F798250F399B00F2C07D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7444F79A250F399E00F2C07D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7444F79D250F399E00F2C07D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,6 +35,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		742C5A6E2515F39B0020E275 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7444F791250F399B00F2C07D /* AppDelegate.swift */,
+				7444F79A250F399E00F2C07D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		742C5A6F2515F3C00020E275 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7444F795250F399B00F2C07D /* ProfileViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		742C5A702515F3DB0020E275 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				742C5A712515F3F20020E275 /* Storyboards */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		742C5A712515F3F20020E275 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				7444F797250F399B00F2C07D /* Main.storyboard */,
+				7444F79C250F399E00F2C07D /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		7444F785250F399B00F2C07D = {
 			isa = PBXGroup;
 			children = (
@@ -54,11 +88,9 @@
 		7444F790250F399B00F2C07D /* TinkoffChat */ = {
 			isa = PBXGroup;
 			children = (
-				7444F791250F399B00F2C07D /* AppDelegate.swift */,
-				7444F795250F399B00F2C07D /* ViewController.swift */,
-				7444F797250F399B00F2C07D /* Main.storyboard */,
-				7444F79A250F399E00F2C07D /* Assets.xcassets */,
-				7444F79C250F399E00F2C07D /* LaunchScreen.storyboard */,
+				742C5A6E2515F39B0020E275 /* Resources */,
+				742C5A6F2515F3C00020E275 /* Controllers */,
+				742C5A702515F3DB0020E275 /* Views */,
 				7444F79F250F399E00F2C07D /* Info.plist */,
 			);
 			path = TinkoffChat;
@@ -135,7 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7444F796250F399B00F2C07D /* ViewController.swift in Sources */,
+				7444F796250F399B00F2C07D /* ProfileViewController.swift in Sources */,
 				7444F792250F399B00F2C07D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

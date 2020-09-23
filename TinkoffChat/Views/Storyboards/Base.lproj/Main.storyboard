@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profile View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ProfileViewController" customModule="TinkoffChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="15z-Eb-xjE">
+                                <rect key="frame" x="40" y="2" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="AOV-pE-OsZ"/>
+                                    <constraint firstAttribute="height" constant="240" id="ocb-Fa-aMX"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekn-xL-6fm">
+                                <rect key="frame" x="248" y="210" width="32" height="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="editPhotoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nKi-wx-bIm"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marina Dudarenko" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jd-fq-R5R">
+                                <rect key="frame" x="60.5" y="274" width="199.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pct-wF-kDV">
+                                <rect key="frame" x="51" y="335" width="218" height="38.5"/>
+                                <string key="text">UX/UI designer, web-designer
+Moscow, Russia</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fC5-HO-yEA">
+                                <rect key="frame" x="28.5" y="496" width="263" height="40"/>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="263" id="5iV-u2-WZV"/>
+                                    <constraint firstAttribute="height" constant="40" id="rwR-TD-Od8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                <state key="normal" title="Save"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveProfileButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="652-Dr-iSo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ekn-xL-6fm" firstAttribute="trailing" secondItem="15z-Eb-xjE" secondAttribute="trailing" id="0iQ-N0-1R8"/>
+                            <constraint firstItem="15z-Eb-xjE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Cvf-Sw-GIF"/>
+                            <constraint firstAttribute="bottom" secondItem="fC5-HO-yEA" secondAttribute="bottom" constant="32" id="DDT-3f-C8j"/>
+                            <constraint firstItem="5jd-fq-R5R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JgM-Rd-uxd"/>
+                            <constraint firstItem="ekn-xL-6fm" firstAttribute="bottom" secondItem="15z-Eb-xjE" secondAttribute="bottom" id="MHq-wK-fqL"/>
+                            <constraint firstItem="pct-wF-kDV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ULc-wp-ZWi"/>
+                            <constraint firstItem="pct-wF-kDV" firstAttribute="top" secondItem="5jd-fq-R5R" secondAttribute="bottom" constant="32" id="Zw6-c3-WId"/>
+                            <constraint firstItem="15z-Eb-xjE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="2" id="gTz-5O-Llr"/>
+                            <constraint firstItem="5jd-fq-R5R" firstAttribute="top" secondItem="15z-Eb-xjE" secondAttribute="bottom" constant="32" id="ij1-L9-k9X"/>
+                            <constraint firstItem="ekn-xL-6fm" firstAttribute="leading" secondItem="15z-Eb-xjE" secondAttribute="trailing" constant="-32" id="o7X-3n-RE3"/>
+                            <constraint firstItem="fC5-HO-yEA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pP2-5d-hPS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="profileImage" destination="15z-Eb-xjE" id="1gK-8G-clh"/>
+                        <outlet property="profileUresInfo" destination="pct-wF-kDV" id="4DK-9V-rT1"/>
+                        <outlet property="profileUserName" destination="5jd-fq-R5R" id="ukW-ky-4pE"/>
+                        <outlet property="saveProfileButton" destination="fC5-HO-yEA" id="jeq-l2-0fs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128.98550724637681" y="94.419642857142847"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="photo" width="240" height="240"/>
+    </resources>
+</document>

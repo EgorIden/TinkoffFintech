@@ -37,6 +37,7 @@ class ConversationsListViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
+    private let themeVC = ThemesViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +68,23 @@ class ConversationsListViewController: UIViewController {
     }
     
     @objc private func openSettings() {
-        print("Settings is open")
+        let storyBoard : UIStoryboard = UIStoryboard(name: "ThemesViewController", bundle:nil)
+        let themesVC = storyBoard.instantiateViewController(withIdentifier: "ThemesViewController") as? ThemesViewController
+        
+        guard let theme = themesVC else { return }
+        theme.title = "Settings"
+        theme.navigationItem.largeTitleDisplayMode = .never
+        
+        //делегат и замыкание
+        
+        theme.themeHandler = { [weak self] color in
+            guard let selfVC = self else {return}
+            selfVC.view.backgroundColor = color
+        }
+        
+        //theme.delegate = self
+        
+        self.navigationController?.pushViewController(theme, animated: true)
     }
     
 }
@@ -112,8 +129,17 @@ extension ConversationsListViewController: UITableViewDelegate{
         destinationVC.title = titleVC
         destinationVC.navigationItem.largeTitleDisplayMode = .never
         
+        self.themeVC.themeHandler = { color in
+            destinationVC.view.backgroundColor = color
+        }
+        
         self.navigationItem.backBarButtonItem = backButton
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
-    
+}
+
+extension ConversationsListViewController: ThemePickerDelegate{
+    func chosenTheme(_ bgColor: UIColor) {
+        self.view.backgroundColor = bgColor
+    }
 }

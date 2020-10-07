@@ -11,12 +11,13 @@ import UIKit
 class ConversationViewController: UIViewController {
     
     //test data
-    private let testData = [MessageCellModel(text: "Good bye!", isOutput: true),
-                            MessageCellModel(text: "It’s morning in Tokyo", isOutput: true),
-                            MessageCellModel(text: "What is the most popular meal in Japan?", isOutput: false),
-                            MessageCellModel(text: "Do you like it?", isOutput: false),
-                            MessageCellModel(text: "What is the most popular meal in Japan?", isOutput: false),
-                            MessageCellModel(text: "I like it", isOutput: true),]
+    private let testData = [
+        MessageCellModel(text: "Good bye!", isOutput: true),
+        MessageCellModel(text: "It’s morning in Tokyo", isOutput: true),
+        MessageCellModel(text: "What is the most popular meal in Japan?", isOutput: false),
+        MessageCellModel(text: "Do you like it?", isOutput: false),
+        MessageCellModel(text: "What is the most popular meal in Japan?", isOutput: false),
+        MessageCellModel(text: "I like it", isOutput: true)]
     
     @IBOutlet weak var tableview: UITableView!
     
@@ -25,6 +26,8 @@ class ConversationViewController: UIViewController {
         
         self.tableview.delegate = self
         self.tableview.dataSource = self
+        self.tableview.register(ConversationTableViewCell.self, forCellReuseIdentifier: "ConversatioinCell")
+        self.tableview.backgroundColor = UIColor(white: 0.9, alpha: 1)
     }
 }
 
@@ -42,7 +45,7 @@ extension ConversationViewController: UITableViewDataSource{
         
         let message = testData[indexPath.row]
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ConversatioinCell", for: indexPath) as? ConversationTableViewCell else {return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ConversatioinCell", for: indexPath) as? ConversationTableViewCell else{return UITableViewCell()}
         
         cell.configure(with: message)
         return cell

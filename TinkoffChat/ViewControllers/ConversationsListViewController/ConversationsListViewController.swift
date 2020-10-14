@@ -64,7 +64,12 @@ class ConversationsListViewController: UIViewController {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Profile", bundle:nil)
         let profileVC = storyBoard.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController
         guard let profile = profileVC else {return}
-        self.present(profile, animated: true, completion: nil)
+        
+        let navVC = UINavigationController(rootViewController: profile)
+        navVC.navigationBar.backgroundColor = UIColor(white: 0.97, alpha: 1)
+        navVC.navigationBar.prefersLargeTitles = true
+        
+        self.present(navVC, animated: true, completion: nil)
     }
     
     @objc private func openSettings() {

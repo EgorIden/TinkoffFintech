@@ -20,6 +20,7 @@ class ThemesViewController: UIViewController {
     
     private let defaultColor = #colorLiteral(red: 0.1246537641, green: 0.280626744, blue: 0.4565510154, alpha: 1)
     private let borderColor = #colorLiteral(red: 0, green: 0.5694751143, blue: 1, alpha: 1)
+    private var prevBtn: UIButton?
     
     private let classicColor = #colorLiteral(red: 0.7500573993, green: 0.7736744285, blue: 0.7676191926, alpha: 1)
     private let dayColor = #colorLiteral(red: 0.6395892501, green: 0.758245945, blue: 0.7440233827, alpha: 1)
@@ -47,10 +48,16 @@ class ThemesViewController: UIViewController {
         self.classicLbl.addGestureRecognizer(classicGesture)
         self.dayLbl.addGestureRecognizer(dayGesture)
         self.nightLbl.addGestureRecognizer(nightGesture)
+        
+        //print(classicBtn.currentTitle, dayBtn.currentTitle, nightBtn.currentTitle)
     }
     
     @IBAction func changeTheme(sender: UIButton) {
-
+        //print(prevBtn?.currentTitle)
+//        if prevBtn?.currentTitle != sender.currentTitle
+//            && prevBtn?.currentTitle != nil{
+//            clearBorder(prevButton: prevBtn)
+//        }
         switch sender.currentTitle {
             case "Classic":
             setClassicTheme()
@@ -71,6 +78,7 @@ class ThemesViewController: UIViewController {
             
             themeHandler?(.white)
             //self.delegate?.chosenTheme(.white)
+            self.prevBtn = classicBtn
         }else{
             classicBtn.layer.cornerRadius = 14
             classicBtn.layer.borderWidth = 2
@@ -80,6 +88,7 @@ class ThemesViewController: UIViewController {
             
             themeHandler?(classicColor)
             //self.delegate?.chosenTheme(classicColor)
+            self.prevBtn = classicBtn
         }
     }
     
@@ -91,6 +100,7 @@ class ThemesViewController: UIViewController {
             
             themeHandler?(.white)
             //self.delegate?.chosenTheme(.white)
+            self.prevBtn = dayBtn
         }else{
             dayBtn.layer.cornerRadius = 14
             dayBtn.layer.borderWidth = 2
@@ -100,6 +110,7 @@ class ThemesViewController: UIViewController {
             
             themeHandler?(dayColor)
             //self.delegate?.chosenTheme(dayColor)
+            self.prevBtn = dayBtn
         }
     }
     
@@ -111,6 +122,7 @@ class ThemesViewController: UIViewController {
             
             themeHandler?(.white)
             //self.delegate?.chosenTheme(.white)
+            self.prevBtn = nightBtn
         }else{
             nightBtn.layer.cornerRadius = 14
             nightBtn.layer.borderWidth = 2
@@ -120,6 +132,13 @@ class ThemesViewController: UIViewController {
             
             themeHandler?(nightColor)
             //self.delegate?.chosenTheme(nightColor)
+            self.prevBtn = nightBtn
         }
     }
+    
+    private func clearBorder(prevButton: UIButton?){
+        guard let prev = prevButton else {return}
+        prev.layer.borderWidth = 0
+    }
+    
 }

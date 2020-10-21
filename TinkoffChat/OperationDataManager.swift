@@ -17,8 +17,8 @@ class OperationDataManager: Operation {
     var changedFlag: Bool
 
     private let path: String = "/Users/egor/Desktop/xcode/Git/TinkoffFintech/"
-    
-    init(inputData:String, fileName:String, changedFlag: Bool){
+
+    init(inputData: String, fileName: String, changedFlag: Bool) {
         self.inputData = inputData
         self.fileName = fileName
         self.changedFlag = changedFlag
@@ -35,32 +35,30 @@ class OperationDataManager: Operation {
         }
     }
 
-    func upload() -> String{
+    func upload() -> String {
         return readDataFromFile(filename: fileName) ?? ""
     }
-    
-    private func saveDataToFile(data: String, filename: String){
+
+    private func saveDataToFile(data: String, filename: String) {
         let filePath = "\(path)\(filename).txt"
         do {
             try data.write(toFile: filePath, atomically: false, encoding: String.Encoding.utf8)
             print("Write to file")
-        }
-        catch let error {
+        } catch let error {
             print(error.localizedDescription)
         }
     }
-    
+
     private func readDataFromFile(filename: String) -> String? {
         let filePath = "\(path)\(filename).txt"
         do {
             let content = try String(contentsOfFile: filePath, encoding: .utf8)
             print("Content of the file ''\(filename)'' is: \(content)")
             return content
-        }
-        catch let error {
+        } catch let error {
             print(error.localizedDescription)
         }
         return nil
     }
-    
+
 }

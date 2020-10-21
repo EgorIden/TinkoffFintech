@@ -7,143 +7,142 @@
 //
 
 import UIKit
+import Firebase
 
 class ConversationsListViewController: UIViewController {
-    
-    //test data
-    private let testData = [Section(name: "Online", dialogs: [ConversationCellModel(name: "User1", message: "Message1asasdasdadsadasdasdasdasdassdsasdassdad", date: Date(), isOnline: true, hasUnreadedMessages: true),
-    ConversationCellModel(name: "User2", message: "", date:  Date(), isOnline: true, hasUnreadedMessages: false),
-    ConversationCellModel(name: "User3", message: "", date:  .init(timeIntervalSince1970: 0), isOnline: true, hasUnreadedMessages: false),
-    ConversationCellModel(name: "User4", message: "Message4", date:  .init(timeIntervalSince1970: 0), isOnline: true, hasUnreadedMessages: true),
-    ConversationCellModel(name: "User5", message: "Message5", date:  .init(timeIntervalSince1970: 0), isOnline: true, hasUnreadedMessages: false),
-    ConversationCellModel(name: "User6", message: "Message6", date:  Date(), isOnline: true, hasUnreadedMessages: false),
-    ConversationCellModel(name: "User7", message: "", date:  .init(timeIntervalSince1970: 0), isOnline: true, hasUnreadedMessages: false),
-    ConversationCellModel(name: "User8", message: "Message8", date:  Date(), isOnline: true, hasUnreadedMessages: false),
-    ConversationCellModel(name: "User9", message: "Message9", date:  .init(timeIntervalSince1970: 0), isOnline: true, hasUnreadedMessages: false),
-    ConversationCellModel(name: "User10", message: "Message10", date:  .init(timeIntervalSince1970: 0), isOnline: true, hasUnreadedMessages: true),
-    ConversationCellModel(name: "User11", message: "", date:  .init(timeIntervalSince1970: 0), isOnline: true, hasUnreadedMessages: false)]),
-                            Section(name: "History", dialogs: [ConversationCellModel(name: "User12", message: "Message12", date:  .init(timeIntervalSince1970: 0),
-                                                                                     isOnline: false, hasUnreadedMessages: false),
-    ConversationCellModel(name: "User13", message: "", date:  .init(timeIntervalSince1970: 0), isOnline: false, hasUnreadedMessages: false),
-    ConversationCellModel(name: "User14", message: "", date:  .init(timeIntervalSince1970: 0), isOnline: false, hasUnreadedMessages: false),
-    ConversationCellModel(name: "User15", message: "Message15", date:  .init(timeIntervalSince1970: 0), isOnline: false, hasUnreadedMessages: true),
-    ConversationCellModel(name: "User16", message: "", date:  .init(timeIntervalSince1970: 0), isOnline: false, hasUnreadedMessages: false),
-    ConversationCellModel(name: "User17", message: "Message17", date:  .init(timeIntervalSince1970: 0), isOnline: false, hasUnreadedMessages: false),
-    ConversationCellModel(name: "User18", message: "", date:  .init(timeIntervalSince1970: 0), isOnline: false, hasUnreadedMessages: false),
-    ConversationCellModel(name: "User19", message: "Message19", date:  Date(), isOnline: false, hasUnreadedMessages: false),
-    ConversationCellModel(name: "User20", message: "Message20", date:  .init(timeIntervalSince1970: 0), isOnline: false, hasUnreadedMessages: true),
-    ConversationCellModel(name: "User21", message: "Message21", date:  .init(timeIntervalSince1970: 0), isOnline: false, hasUnreadedMessages: true),
-    ConversationCellModel(name: "User22", message: "Message22", date:  .init(timeIntervalSince1970: 0), isOnline: false, hasUnreadedMessages: false)])]
-    
-    
+    private var channels = [Channel]()
+    private var fbManager = FirebaseManager()
+
     @IBOutlet weak var tableView: UITableView!
     private let themeVC = ThemesViewController()
-    
+    private let myID = UIDevice.current.identifierForVendor?.uuidString ?? "1111222333"
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
         setupBarButtons()
+        
+        fbManager.fetchChannels { [weak self] channels in
+            self?.channels = channels
+            self?.tableView.reloadData()
+        }
+        print(myID)
     }
-    
-    private func setupBarButtons(){
+    private func setupBarButtons() {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         
         let settings = UIImage(named: "settings")?.withRenderingMode(.alwaysOriginal)
-        let settingBarButton = UIBarButtonItem(image: settings, style: .plain , target: self, action: #selector(self.openSettings))
+        let settingBarButton = UIBarButtonItem(image: settings, style: .plain, target: self, action: #selector(self.openSettings))
         navigationItem.leftBarButtonItem = settingBarButton
+
+        let channel = UIImage(named: "add")?.withRenderingMode(.alwaysOriginal)
+        let channelBtn = UIBarButtonItem(image: channel, style: .plain, target: self, action: #selector(self.addChannel))
         
         let profile = UIImage(named: "profile_small")?.withRenderingMode(.alwaysOriginal)
-        let profileBarButton = UIBarButtonItem(image: profile, style: .plain , target: self, action: #selector(self.openProfile))
-        navigationItem.rightBarButtonItem = profileBarButton
+        let profileBarButton = UIBarButtonItem(image: profile, style: .plain, target: self, action: #selector(self.openProfile))
+        navigationItem.rightBarButtonItems = [profileBarButton,channelBtn]
     }
-    
+
     @objc private func openProfile() {
-        
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Profile", bundle:nil)
+
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
         let profileVC = storyBoard.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController
         guard let profile = profileVC else {return}
-        
+
         let navVC = UINavigationController(rootViewController: profile)
         navVC.navigationBar.backgroundColor = UIColor(white: 0.97, alpha: 1)
         navVC.navigationBar.prefersLargeTitles = true
-        
+
         self.present(navVC, animated: true, completion: nil)
     }
     
     @objc private func openSettings() {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "ThemesViewController", bundle:nil)
+        let storyBoard: UIStoryboard = UIStoryboard(name: "ThemesViewController", bundle: nil)
         let themesVC = storyBoard.instantiateViewController(withIdentifier: "ThemesViewController") as? ThemesViewController
-        
+
         guard let theme = themesVC else { return }
         theme.title = "Settings"
         theme.navigationItem.largeTitleDisplayMode = .never
-        
+
         //делегат и замыкание
-        
+
         theme.themeHandler = { [weak self] color in
             guard let selfVC = self else {return}
             selfVC.view.backgroundColor = color
         }
-        
+
         //theme.delegate = self
-        
+
         self.navigationController?.pushViewController(theme, animated: true)
     }
     
+    @objc private func addChannel() {
+        
+        let alert = UIAlertController(title: "Создать новый канал", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Название канала"
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
+            guard let channelName = alert.textFields?[0].text else {return}
+            if channelName == "" {return}
+            
+            let newChannel = Channel(identifier: self.myID, name: channelName, lastMessage: "", lastActivity: Timestamp().dateValue())
+            self.fbManager.addChannel(channel: newChannel)
+            
+        }))
+        self.present(alert, animated: true)
+        
+    }
+
 }
 
-extension ConversationsListViewController: UITableViewDataSource{
-    func numberOfSections(in tableView: UITableView) -> Int {
-        testData.count
-    }
-    
+extension ConversationsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        testData[section].dialogs.count
+        return self.channels.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let section = testData[indexPath.section]
-        let dialog = section.dialogs[indexPath.row]
-        
+        let channel = self.channels[indexPath.row]
+
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ConversatioinsCell", for: indexPath) as? ConversationsTableViewCell else {return UITableViewCell()}
-        
-        cell.configure(with: dialog)
+
+        cell.configure(with: ConversationsTableViewCell.ConfigureationModel.init(channel: channel))
         return cell
     }
 }
 
-extension ConversationsListViewController: UITableViewDelegate{
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return testData[section].name
-    }
-    
+extension ConversationsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
         let backButton = UIBarButtonItem()
         backButton.title = ""
         
-        let titleVC = testData[indexPath.section].dialogs[indexPath.row].name
+        let titleVC = self.channels[indexPath.row].name
+        let channelID = self.channels[indexPath.row].identifier
+        print(channelID)
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Conversation", bundle:nil)
-        let conversationVC = storyBoard.instantiateViewController(withIdentifier: "ConversationViewController") as? ConversationViewController
-        
-        guard let destinationVC = conversationVC else { return }
-        destinationVC.title = titleVC
-        destinationVC.navigationItem.largeTitleDisplayMode = .never
-        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Conversation", bundle: nil)
+        let destinationVC = storyBoard.instantiateViewController(withIdentifier: "ConversationViewController") as? ConversationViewController
+
+        guard let conversationVC = destinationVC else { return }
+        conversationVC.title = titleVC
+        conversationVC.channelID = channelID
+        conversationVC.myID = myID
+
         self.themeVC.themeHandler = { color in
-            destinationVC.view.backgroundColor = color
+            conversationVC.view.backgroundColor = color
         }
-        
+
         self.navigationItem.backBarButtonItem = backButton
-        self.navigationController?.pushViewController(destinationVC, animated: true)
+        self.navigationController?.pushViewController(conversationVC, animated: true)
     }
 }
 
-extension ConversationsListViewController: ThemePickerDelegate{
+extension ConversationsListViewController: ThemePickerDelegate {
     func chosenTheme(_ bgColor: UIColor) {
         self.view.backgroundColor = bgColor
     }

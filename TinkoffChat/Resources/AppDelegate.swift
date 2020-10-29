@@ -14,10 +14,10 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
     //Change to false to stop loggign
     var logFlag = false
-
+    
     //Method called when the launch process is initiated
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         //print("Application moved from <Not running> to <Inactive>: <\(#function)>")
@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         printLogsWith(message: "Application launching and still <Inactive>: <\(#function)>", flag: logFlag)
         FirebaseApp.configure()
+        self.setCoreData()
         return true
     }
 
@@ -64,5 +65,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func printLogsWith(message: String, flag: Bool) {
         guard flag else {return}
         print(message)
+    }
+    
+    func setCoreData(){
+        CoreDataManager.shared.enableObservers()
+        CoreDataManager.shared.didUpdateDatabase = { dbStack in
+            dbStack.bdStatistic()
+        }
     }
 }

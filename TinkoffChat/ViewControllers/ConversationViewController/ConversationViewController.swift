@@ -30,10 +30,8 @@ class ConversationViewController: UIViewController {
         fbManager.fetchMessages(id: channelID) { [weak self] fetchedMessages in
             guard let slf = self else{return}
             slf.messages = fetchedMessages
-            print(fetchedMessages)
             slf.tableview.reloadData()
         }
-        
     }
 }
 
@@ -49,7 +47,7 @@ extension ConversationViewController: UITableViewDataSource {
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ConversatioinCell", for: indexPath) as? ConversationTableViewCell else {return UITableViewCell()}
 
-        cell.configure(with: ConversationTableViewCell.ConfigureationModel.init(message: message, id: myID))
+        cell.configure(with: ConversationTableViewCell.ConfigureationModel.init(message: message, myID: myID))
         return cell
     }
 }

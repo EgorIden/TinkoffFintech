@@ -11,7 +11,7 @@ import Firebase
 
 class ConversationsListViewController: UIViewController {
     private var channels = [Channel]()
-    private var fbManager = FirebaseManager()
+    private let fbManager = FirebaseManager()
 
     @IBOutlet weak var tableView: UITableView!
     private let themeVC = ThemesViewController()

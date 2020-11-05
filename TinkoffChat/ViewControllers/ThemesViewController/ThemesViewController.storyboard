@@ -17,19 +17,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Lov-lR-5Vi">
-                                <rect key="frame" x="37.666666666666657" y="206" width="300" height="157"/>
+                                <rect key="frame" x="37.666666666666657" y="206" width="300" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTc-BU-XuO">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="114"/>
-                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="100" maxY="0.0"/>
-                                        <size key="titleShadowOffset" width="-100" height="300"/>
-                                        <state key="normal" title="Classic" image="Classic"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="57"/>
+                                        <state key="normal" image="Classic"/>
                                         <connections>
-                                            <action selector="changeThemeWithSender:" destination="MdA-8g-UbY" eventType="touchUpInside" id="TbH-Es-NB9"/>
+                                            <action selector="changeThemeWithSender:" destination="MdA-8g-UbY" eventType="touchUpInside" id="Das-DD-qgm"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Classic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMr-FB-uuu">
-                                        <rect key="frame" x="119.6666666666667" y="134" width="60.666666666666671" height="23"/>
+                                        <rect key="frame" x="119.6666666666667" y="77" width="60.666666666666671" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -37,18 +35,17 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="a4f-ac-6pH">
-                                <rect key="frame" x="37" y="403" width="301" height="159"/>
+                                <rect key="frame" x="37" y="346" width="301" height="101.33333333333331"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVJ-YL-pnn">
-                                        <rect key="frame" x="0.0" y="0.0" width="301" height="116"/>
-                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="100" maxY="0.0"/>
-                                        <state key="normal" title="Day" image="Day"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVJ-YL-pnn">
+                                        <rect key="frame" x="0.0" y="0.0" width="301" height="58.333333333333336"/>
+                                        <state key="normal" image="Day"/>
                                         <connections>
-                                            <action selector="changeThemeWithSender:" destination="MdA-8g-UbY" eventType="touchUpInside" id="sJG-q5-iYV"/>
+                                            <action selector="changeThemeWithSender:" destination="MdA-8g-UbY" eventType="touchUpInside" id="wrg-ZM-irN"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eR7-gg-V8b">
-                                        <rect key="frame" x="134" y="136" width="33" height="23"/>
+                                        <rect key="frame" x="134" y="78.333333333333314" width="33" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -56,18 +53,17 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Rzr-GR-Uon">
-                                <rect key="frame" x="37" y="602" width="301" height="159"/>
+                                <rect key="frame" x="37" y="487.33333333333331" width="301" height="101.33333333333331"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ys9-hH-QjE">
-                                        <rect key="frame" x="0.0" y="0.0" width="301" height="116"/>
-                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="100" maxY="0.0"/>
-                                        <state key="normal" title="Night" image="Night"/>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ys9-hH-QjE">
+                                        <rect key="frame" x="0.0" y="0.0" width="301" height="58.333333333333336"/>
+                                        <state key="normal" image="Night"/>
                                         <connections>
-                                            <action selector="changeThemeWithSender:" destination="MdA-8g-UbY" eventType="touchUpInside" id="1G6-cT-jVw"/>
+                                            <action selector="changeThemeWithSender:" destination="MdA-8g-UbY" eventType="touchUpInside" id="zPg-up-DdF"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rF-pk-bnn">
-                                        <rect key="frame" x="127.33333333333333" y="136" width="46.333333333333329" height="23"/>
+                                        <rect key="frame" x="127.33333333333333" y="78.333333333333314" width="46.333333333333329" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -93,12 +89,12 @@
                         <viewLayoutGuide key="safeArea" id="eTj-v9-o3h"/>
                     </view>
                     <connections>
-                        <outlet property="classicBtn" destination="DTc-BU-XuO" id="nCf-UC-EHD"/>
                         <outlet property="classicLbl" destination="AMr-FB-uuu" id="k3W-Pi-cr4"/>
-                        <outlet property="dayBtn" destination="aVJ-YL-pnn" id="ppC-RA-VtK"/>
                         <outlet property="dayLbl" destination="eR7-gg-V8b" id="QkO-4G-fD5"/>
-                        <outlet property="nightBtn" destination="Ys9-hH-QjE" id="ucc-qW-6j8"/>
                         <outlet property="nightLbl" destination="8rF-pk-bnn" id="75X-nm-iTM"/>
+                        <outletCollection property="buttons" destination="DTc-BU-XuO" collectionClass="NSMutableArray" id="lJH-Xa-hb7"/>
+                        <outletCollection property="buttons" destination="aVJ-YL-pnn" collectionClass="NSMutableArray" id="Kxa-gw-2MI"/>
+                        <outletCollection property="buttons" destination="Ys9-hH-QjE" collectionClass="NSMutableArray" id="1Y0-oe-7E1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CtI-rv-FFM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

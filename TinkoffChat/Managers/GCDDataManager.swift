@@ -23,12 +23,8 @@ class GCDDataManager {
     }
 
     func writeData(dataToSave: UserProfile, completion: @escaping (Bool) -> Void) {
-
-        //let userStringImg = saveImgToString(img: dataToSave.img)
-
         saveDataToFile(str: dataToSave.name, filename: "name")
         saveDataToFile(str: dataToSave.info, filename: "info")
-        //saveDataToFile(str: userStringImg, filename: "img")
         saveImgToFile(img: dataToSave.img, filename: "img")
 
         if self.errors.isEmpty {
@@ -39,7 +35,6 @@ class GCDDataManager {
     }
 
     private func saveDataToFile(str: String, filename: String) {
-
         queue.async(group: writeGroup, flags: .barrier) {[weak self] in
             guard let slf = self else {return}
             let filePath = "\(slf.path)\(filename).txt"
@@ -55,13 +50,7 @@ class GCDDataManager {
 
     func uploadData(completion: @escaping (UserProfile?) -> Void) {
         queue.async(group: readGroup) {
-
-            //let baseStr = self.readDataFromFile(filename: "img")
-            //guard let data = self.imgStringToData(imgStr: baseStr) else {return}
-            //guard let data = self.imgData else{return}
-
             guard let dataImg = self.uploadImg(filename: "img") else {return}
-
             let user = UserProfile(name: self.readDataFromFile(filename: "name"),
                                     info: self.readDataFromFile(filename: "info"),
                                     img: UIImage(data: dataImg))
@@ -90,30 +79,8 @@ class GCDDataManager {
         return ""
     }
 
-//    private func saveImgToString(img: UIImage?) -> String{
-//
-//        guard let image = img else{return ""}
-//
-//        if let pngData = image.pngData(){
-//            self.imgData = pngData
-//            let strData = String(decoding: pngData, as: UTF8.self)
-//            return strData
-//        }else{
-//            guard let jpegData = image.jpegData(compressionQuality: 1.0) else{return ""}
-//            self.imgData = jpegData
-//            let strData = String(decoding: jpegData, as: UTF8.self)
-//            return strData
-//        }
-//    }
-//
-//    private func imgStringToData(imgStr: String) -> Data?{
-//        let dataStr = imgStr.data(using: String.Encoding.utf8)
-//        return dataStr
-//    }
-
     private func saveImgToFile(img: UIImage?, filename: String) {
         let pathURL = URL(string: "file://\(path)\(filename).txt")
-
         guard let url = pathURL else {return}
         guard let image = img else {return}
 

@@ -13,6 +13,8 @@ class ThemesViewController: UIViewController {
     @IBOutlet weak var classicBtn: UIButton!
     @IBOutlet weak var dayBtn: UIButton!
     @IBOutlet weak var nightBtn: UIButton!
+    
+    @IBOutlet var buttons: [UIButton]!
 
     @IBOutlet weak var classicLbl: UILabel!
     @IBOutlet weak var dayLbl: UILabel!
@@ -31,7 +33,7 @@ class ThemesViewController: UIViewController {
     // и конструкция [weak self]
     // Это позволяет создавать слабые ссылки на объекты, которую потом удаляет ARC
 
-    var themeHandler: ((UIColor)->Void)?
+    var themeHandler: ((UIColor) -> Void)?
     weak var delegate: ThemePickerDelegate?
 
     override func viewDidLoad() {
@@ -53,17 +55,12 @@ class ThemesViewController: UIViewController {
     }
 
     @IBAction func changeTheme(sender: UIButton) {
-        //print(prevBtn?.currentTitle)
-//        if prevBtn?.currentTitle != sender.currentTitle
-//            && prevBtn?.currentTitle != nil{
-//            clearBorder(prevButton: prevBtn)
-//        }
-        switch sender.currentTitle {
-            case "Classic":
+        switch sender.tag {
+            case 0:
             setClassicTheme()
-            case "Day":
+            case 1:
             setDayTheme()
-            case "Night":
+            case 2:
             setNightTheme()
         default:
             return
@@ -71,19 +68,19 @@ class ThemesViewController: UIViewController {
     }
 
     @objc private func setClassicTheme() {
-        if classicBtn.isSelected {
-            classicBtn.layer.borderWidth = 0
-            classicBtn.isSelected = false
+        if buttons[0].isSelected {
+            buttons[0].layer.borderWidth = 0
+            buttons[0].isSelected = false
             self.view.backgroundColor = defaultColor
 
             themeHandler?(.white)
             //self.delegate?.chosenTheme(.white)
             self.prevBtn = classicBtn
         } else {
-            classicBtn.layer.cornerRadius = 14
-            classicBtn.layer.borderWidth = 2
-            classicBtn.layer.borderColor = borderColor.cgColor
-            classicBtn.isSelected = true
+            buttons[0].layer.cornerRadius = 14
+            buttons[0].layer.borderWidth = 2
+            buttons[0].layer.borderColor = borderColor.cgColor
+            buttons[0].isSelected = true
             self.view.backgroundColor = classicColor
 
             themeHandler?(classicColor)
@@ -93,19 +90,19 @@ class ThemesViewController: UIViewController {
     }
 
     @objc private func setDayTheme() {
-        if dayBtn.isSelected {
-            dayBtn.layer.borderWidth = 0
-            dayBtn.isSelected = false
+        if buttons[1].isSelected {
+            buttons[1].layer.borderWidth = 0
+            buttons[1].isSelected = false
             self.view.backgroundColor = defaultColor
 
             themeHandler?(.white)
             //self.delegate?.chosenTheme(.white)
             self.prevBtn = dayBtn
         } else {
-            dayBtn.layer.cornerRadius = 14
-            dayBtn.layer.borderWidth = 2
-            dayBtn.layer.borderColor = borderColor.cgColor
-            dayBtn.isSelected = true
+            buttons[1].layer.cornerRadius = 14
+            buttons[1].layer.borderWidth = 2
+            buttons[1].layer.borderColor = borderColor.cgColor
+            buttons[1].isSelected = true
             self.view.backgroundColor = dayColor
 
             themeHandler?(dayColor)
@@ -115,19 +112,19 @@ class ThemesViewController: UIViewController {
     }
 
     @objc private func setNightTheme() {
-        if nightBtn.isSelected {
-            nightBtn.layer.borderWidth = 0
-            nightBtn.isSelected = false
+        if buttons[2].isSelected {
+            buttons[2].layer.borderWidth = 0
+            buttons[2].isSelected = false
             self.view.backgroundColor = defaultColor
 
             themeHandler?(.white)
             //self.delegate?.chosenTheme(.white)
             self.prevBtn = nightBtn
         } else {
-            nightBtn.layer.cornerRadius = 14
-            nightBtn.layer.borderWidth = 2
-            nightBtn.layer.borderColor = borderColor.cgColor
-            nightBtn.isSelected = true
+            buttons[2].layer.cornerRadius = 14
+            buttons[2].layer.borderWidth = 2
+            buttons[2].layer.borderColor = borderColor.cgColor
+            buttons[2].isSelected = true
             self.view.backgroundColor = nightColor
 
             themeHandler?(nightColor)

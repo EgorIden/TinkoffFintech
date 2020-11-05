@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    //UI
+    //MARK: Setup UI
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileUserName: UILabel!
     @IBOutlet weak var profileUserNameField: UITextField!
@@ -61,7 +61,7 @@ class ProfileViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = editBtn
     }
 
-    //Mode
+    //MARK: Mode
     private func setDefaultMode() {
         self.title = "My profile"
         self.profileImage.layer.cornerRadius = profileImage.bounds.width/2
@@ -81,7 +81,7 @@ class ProfileViewController: UIViewController {
         self.operationBtn.layer.backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.9176470588, blue: 0.9647058824, alpha: 1)
     }
 
-    //Buttons
+    //MARK: Buttons
     @objc private func editBtnTapped() {
         self.profileImage.image = UIImage(named: "Profile")
 
@@ -166,7 +166,7 @@ class ProfileViewController: UIViewController {
 
     }
 
-    //Changing flags
+    //MARK: Changing flags
     @objc private func nameDidChanged() {
         self.gcdBtn.isUserInteractionEnabled = true
         self.gcdBtn.layer.backgroundColor = #colorLiteral(red: 0.5802721635, green: 0.7790466857, blue: 0.9647058824, alpha: 1)
@@ -183,7 +183,7 @@ class ProfileViewController: UIViewController {
         self.flagInfo = true
     }
 
-    //Action sheet
+    //MARK: Action sheet
     private func presentActionSheet() {
 
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -236,7 +236,7 @@ class ProfileViewController: UIViewController {
         }
     }
 
-    //Alerts
+    //MARK: Alerts
     private func succesAlert() {
         let alert = UIAlertController(title: "Данные сохранены",
                                       message: "", preferredStyle: .alert)

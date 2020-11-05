@@ -27,66 +27,71 @@ class CoreDataManager {
     private let dataModelName = "Chat"
     private let dataModelExtension = "momd"
     
-    //init stack
+    //MARK: init stack
     private(set) lazy var managedObjectModel: NSManagedObjectModel = {
         guard let modelURL = Bundle.main.url(forResource: self.dataModelName, withExtension: self.dataModelExtension) else {
             fatalError("model not found")
         }
+        print(modelURL)
         guard let managedObjectModel = NSManagedObjectModel(contentsOf: modelURL) else{
             fatalError("managedObjectModel could not be created")
         }
         return managedObjectModel
     }()
-    
     private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
-        let coordinator = NSPersistentStoreCoordinator (managedObjectModel: self.managedObjectModel)
-        do{
+        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+        do {
             try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: self.storeURL, options: nil)
-        }catch{
+        } catch {
             fatalError(error.localizedDescription)
         }
         return coordinator
     }()
-    
     private lazy var writtenContext: NSManagedObjectContext = {
         let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         context.persistentStoreCoordinator = persistentStoreCoordinator
-        context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+        context.mergePolicy = NSOverwriteMergePolicy
         return context
     }()
-    
     private(set) lazy var mainContext: NSManagedObjectContext = {
         let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         context.parent = writtenContext
         context.automaticallyMergesChangesFromParent = true
-        context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         return context
     }()
-    
     private func saveContext() -> NSManagedObjectContext {
         let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         context.parent = mainContext
         context.automaticallyMergesChangesFromParent = true
-        context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         return context
     }
-    
-    func performSave(_ block: (NSManagedObjectContext) -> Void){
+    func performSave(_ block: (NSManagedObjectContext) -> Void) {
         let context = saveContext()
         context.performAndWait {
             block(context)
-            if context.hasChanges{
-                do {try performSave(in: context)}
-                catch {assertionFailure(error.localizedDescription)}
+            if context.hasChanges {
+                do {
+                    try context.obtainPermanentIDs(for: Array(context.insertedObjects))
+                } catch {
+                    assertionFailure(error.localizedDescription)
+                }
+                performSave(in: context)
             }
         }
     }
-    private func performSave(in context: NSManagedObjectContext) throws{
-        print("mainthread-> \(Thread.isMainThread)")
-        try context.save()
-        if let parent = context.parent{try performSave(in: parent)}
+    private func performSave(in context: NSManagedObjectContext) {
+        context.performAndWait {
+            do {
+                try context.save()
+            } catch {
+                assertionFailure(error.localizedDescription)
+            }
+        }
+        if let parent = context.parent { performSave(in: parent) }
     }
-    //Save channels
+    // MARK: Save channels
     func saveChannelToDB(channels: [Channel]) {
         DispatchQueue.global().async { [weak self] in
             self?.performSave { context in
@@ -96,16 +101,15 @@ class CoreDataManager {
             }
         }
     }
-    //Save messages
+    // MARK: Save messages
     func saveMessageToDB(id: String, messages: [Message]) {
         DispatchQueue.global().async { [weak self] in
             self?.performSave { context in
                 let request: NSFetchRequest<DBChannel> = DBChannel.fetchRequest()
                 request.predicate = NSPredicate(format: "identifier = %@", id)
                 request.returnsObjectsAsFaults = false
-                
                 let result = try? context.fetch(request)
-                if let channel = result?[0]{
+                if let channel = result?.first {
                     print("Messages in save-> \(messages.count)")
                     let messages = messages.map { message -> DBMessage in
                         let someMessage = DBMessage(message: message, in: context)
@@ -116,7 +120,22 @@ class CoreDataManager {
             }
         }
     }
-    //CoreData Statistic
+    // MARK: Delete channel
+    func deleteChannelFromDB(channelId: String){
+        let context = self.mainContext
+        let fetchRequest: NSFetchRequest<DBChannel> = DBChannel.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier = %@", channelId)
+        let result = try? context.fetch(fetchRequest)
+        if let channel = result?.first {
+            context.delete(channel)
+            do {
+                try self.mainContext.save()
+            } catch {
+                print("deleting error -> \(error.localizedDescription)")
+            }
+        }
+    }
+    //MARK: CoreData Statistic
     func enableObservers() {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self,

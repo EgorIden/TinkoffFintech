@@ -46,7 +46,7 @@ class ConversationViewController: UIViewController {
     private var containerHeightConstraint: NSLayoutConstraint?
     private lazy var fetchedResultsController: NSFetchedResultsController<DBMessage>? = {
         let fetchRequest: NSFetchRequest<DBMessage> = DBMessage.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "created", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: "created", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         let predicate = NSPredicate(format: "channel.identifier = %@", channelId)
         fetchRequest.predicate = predicate

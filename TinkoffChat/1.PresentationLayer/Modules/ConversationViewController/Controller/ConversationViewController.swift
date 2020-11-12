@@ -40,8 +40,8 @@ class ConversationViewController: UIViewController {
     }()
     var channelId: String = ""
     var myId: String = ""
-    private var messages = [Message]()
-    private let fbManager = FirebaseManager()
+    var model: IConversationModel?
+    var presentationAssembly: IPresentationAssembly?
     private var containerBottomConstraint: NSLayoutConstraint?
     private var containerHeightConstraint: NSLayoutConstraint?
     private lazy var fetchedResultsController: NSFetchedResultsController<DBMessage>? = {
@@ -51,9 +51,10 @@ class ConversationViewController: UIViewController {
         let predicate = NSPredicate(format: "channel.identifier = %@", channelId)
         fetchRequest.predicate = predicate
         fetchRequest.fetchBatchSize = 20
+        guard let context = model?.getContext() else { return NSFetchedResultsController() }
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
-            managedObjectContext: CoreDataManager.shared.mainContext,
+            managedObjectContext: context,
             sectionNameKeyPath: nil,
             cacheName: "messages")
         fetchedResultsController.delegate = self
@@ -79,15 +80,14 @@ class ConversationViewController: UIViewController {
     }
     
     private func fetchMessages(channelId: String) {
+        print(channelId)
         do {
             try fetchedResultsController?.performFetch()
+            tableView.reloadData()
         } catch {
             print("fetching messages error -> \(error.localizedDescription)")
         }
-        fbManager.fetchMessages(id: channelId, completion: { [weak self] in
-            print("sucess fetching messages in VDL")
-            self?.tableView.reloadData()
-        })
+        model?.fetchMessages(channelId: channelId)
         print("fetched messages -> \(fetchedResultsController?.fetchedObjects?.count)")
     }
     // UI settings
@@ -129,7 +129,7 @@ class ConversationViewController: UIViewController {
     @objc func sendBtnTapped() {
         guard let message = textView.text else {return}
         if message != ""{
-            fbManager.sendMessage(senderId: myId, channelId: channelId, message: message)
+            model?.sendMessage(senderId: myId, channelId: channelId, message: message)
             textView.text = ""
         } else {
             print("insert text")

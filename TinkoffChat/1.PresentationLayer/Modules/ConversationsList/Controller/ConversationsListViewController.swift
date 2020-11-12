@@ -11,22 +11,21 @@ import Firebase
 import CoreData
 
 class ConversationsListViewController: UIViewController {
-    private var channels = [Channel]()
-    private let fbManager = FirebaseManager()
-
     @IBOutlet weak var tableView: UITableView!
+    var model: IConversationsModel?
+    var presentationAssembly: IPresentationAssembly?
     private let themeVC = ThemesViewController()
     private let myId = UIDevice.current.identifierForVendor?.uuidString ?? "1111222333"
     
     private lazy var fetchedResultsController: NSFetchedResultsController<DBChannel> = {
-    let fetchRequest: NSFetchRequest<DBChannel> = DBChannel.fetchRequest()
-    let sortDescriptors = [NSSortDescriptor(key: "name", ascending: true),
+        let fetchRequest: NSFetchRequest<DBChannel> = DBChannel.fetchRequest()
+        let sortDescriptors = [NSSortDescriptor(key: "name", ascending: true),
                            NSSortDescriptor(key: "lastActivity", ascending: false)]
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.fetchBatchSize = 20
-
+        guard let context = model?.getContext() else { return NSFetchedResultsController() }
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
-                                                                  managedObjectContext: CoreDataManager.shared.mainContext,
+                                                                  managedObjectContext: context,
                                                                   sectionNameKeyPath: nil, cacheName: "channelsList")
         fetchedResultsController.delegate = self
         return fetchedResultsController
@@ -39,16 +38,14 @@ class ConversationsListViewController: UIViewController {
         self.setupBarButtons()
         self.fetchChannels()
     }
+    
     private func fetchChannels() {
         do {
             try fetchedResultsController.performFetch()
         } catch {
             print("fetching channels error -> \(error.localizedDescription)")
         }
-        fbManager.fetchChannels { [weak self] in
-            print("sucess fetching challels in VDL")
-            self?.tableView.reloadData()
-        }
+        model?.fetchChannels()
         print("fetched objects -> \(fetchedResultsController.fetchedObjects?.count)")
     }
     // MARK: Setup UI
@@ -110,7 +107,7 @@ class ConversationsListViewController: UIViewController {
                                      name: channelName,
                                      lastMessage: "",
                                      lastActivity: Timestamp().dateValue())
-            self.fbManager.addChannel(channel: newChannel)
+            self.model?.addChannel(channel: newChannel)
         }))
         self.present(alert, animated: true)
     }
@@ -132,7 +129,7 @@ extension ConversationsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let channel = fetchedResultsController.object(at: indexPath)
-            CoreDataManager.shared.deleteChannelFromDB(channelId: channel.identifier)
+            model?.deleteChannel(identifier: channel.identifier)
         }
     }
 }
@@ -143,7 +140,7 @@ extension ConversationsListViewController: UITableViewDelegate {
         let channel = fetchedResultsController.object(at: indexPath)
         let titleVC = channel.name
         let channelId = channel.identifier
-        let conversationVC = ConversationViewController()
+        guard let conversationVC = presentationAssembly?.сonversationViewController() else { return }
         conversationVC.title = titleVC
         conversationVC.channelId = channelId
         conversationVC.myId = myId

@@ -9,16 +9,19 @@
 import Foundation
 import CoreData
 
+protocol ICoreDataStack {
+    var mainContext: NSManagedObjectContext { get }
+    func performSave(_ block: (NSManagedObjectContext) -> Void)
+}
+
 //CoreDataStack
-class CoreDataManager {
-    
-    static var shared = CoreDataManager()
+class CoreDataStack {
+    static var shared = CoreDataStack()
     private init() {}
-    
     var didUpdateDatabase: ((CoreDataManager) -> Void)?
     var storeURL: URL = {
         guard let docURL = FileManager.default.urls(for: .documentDirectory,
-                                                    in: .userDomainMask).last else{
+                                                    in: .userDomainMask).last else {
             fatalError("document path not found")
         }
         return docURL.appendingPathComponent("Chat.sqlite")
@@ -91,50 +94,6 @@ class CoreDataManager {
         }
         if let parent = context.parent { performSave(in: parent) }
     }
-    // MARK: Save channels
-    func saveChannelToDB(channels: [Channel]) {
-        DispatchQueue.global().async { [weak self] in
-            self?.performSave { context in
-                channels.forEach { channel in
-                    _ = DBChannel(channel: channel, in: context)
-                }
-            }
-        }
-    }
-    // MARK: Save messages
-    func saveMessageToDB(id: String, messages: [Message]) {
-        DispatchQueue.global().async { [weak self] in
-            self?.performSave { context in
-                let request: NSFetchRequest<DBChannel> = DBChannel.fetchRequest()
-                request.predicate = NSPredicate(format: "identifier = %@", id)
-                request.returnsObjectsAsFaults = false
-                let result = try? context.fetch(request)
-                if let channel = result?.first {
-                    print("Messages in save-> \(messages.count)")
-                    let messages = messages.map { message -> DBMessage in
-                        let someMessage = DBMessage(message: message, in: context)
-                        return someMessage
-                    }
-                    messages.forEach({channel.addToMessage($0)})
-                }
-            }
-        }
-    }
-    // MARK: Delete channel
-    func deleteChannelFromDB(channelId: String){
-        let context = self.mainContext
-        let fetchRequest: NSFetchRequest<DBChannel> = DBChannel.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "identifier = %@", channelId)
-        let result = try? context.fetch(fetchRequest)
-        if let channel = result?.first {
-            context.delete(channel)
-            do {
-                try self.mainContext.save()
-            } catch {
-                print("deleting error -> \(error.localizedDescription)")
-            }
-        }
-    }
     //MARK: CoreData Statistic
     func enableObservers() {
         let notificationCenter = NotificationCenter.default
@@ -146,7 +105,7 @@ class CoreDataManager {
     
     @objc private func managedObjectContextObjectsDidChange(notification: NSNotification){
         guard let userInfo = notification.userInfo else {return}
-        didUpdateDatabase?(self)
+        //didUpdateDatabase?(self)
         
         if let inserts = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject>,
             inserts.count > 0{

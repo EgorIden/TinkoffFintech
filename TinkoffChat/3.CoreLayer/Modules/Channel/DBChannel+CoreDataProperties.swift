@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension DBChannel {
 
     convenience init(channel: Channel, in context: NSManagedObjectContext) {

@@ -41,9 +41,7 @@ class ConversationViewController: UIViewController {
     var channelId: String = ""
     var myId: String = ""
     var model: IConversationModel?
-    var presentationAssembly: IPresentationAssembly?
     private var containerBottomConstraint: NSLayoutConstraint?
-    private var containerHeightConstraint: NSLayoutConstraint?
     private lazy var fetchedResultsController: NSFetchedResultsController<DBMessage>? = {
         let fetchRequest: NSFetchRequest<DBMessage> = DBMessage.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "created", ascending: true)
@@ -60,7 +58,6 @@ class ConversationViewController: UIViewController {
         fetchedResultsController.delegate = self
         return fetchedResultsController
     }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.containerBottomConstraint = NSLayoutConstraint(item: messageContainer,
@@ -78,7 +75,6 @@ class ConversationViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
             name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
     private func fetchMessages(channelId: String) {
         print(channelId)
         do {
@@ -150,7 +146,6 @@ class ConversationViewController: UIViewController {
         }
     }
 }
-
 extension ConversationViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let sections = self.fetchedResultsController?.sections else { return 0}
@@ -166,7 +161,6 @@ extension ConversationViewController: UITableViewDataSource, UITableViewDelegate
         return cell
     }
 }
-
 extension ConversationViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -179,7 +173,6 @@ extension ConversationViewController: NSFetchedResultsControllerDelegate {
 
         let indexPath = indexPath ?? IndexPath()
         let newIndexPath = newIndexPath ?? IndexPath()
-        
         switch type {
         case .insert:
             self.tableView.insertRows(at: [newIndexPath], with: .automatic)

@@ -13,6 +13,8 @@ protocol IPresentationAssembly {
     func conversationsListViewController() -> ConversationsListViewController
     func сonversationViewController() -> ConversationViewController
     func navigationController() -> UINavigationController
+    func profileController() -> ProfileViewController
+    func avatarController() -> AvatarViewController
 }
 
 class PresentationAssembly: IPresentationAssembly {
@@ -35,11 +37,27 @@ class PresentationAssembly: IPresentationAssembly {
         return conversationsVC
     }
     func сonversationViewController() -> ConversationViewController {
-        let model = ConversationListModel(firebaseService: serviceAssembly.firebaseService,
+        let model = ConversationModel(firebaseService: serviceAssembly.firebaseService,
                                            coreDataService: serviceAssembly.coreDataService)
         let сonversationVC = ConversationViewController()
-        сonversationVC.presentationAssembly = self
         сonversationVC.model = model
         return сonversationVC
+    }
+    func profileController() -> ProfileViewController {
+        let model = ProfileModel(gcdService: serviceAssembly.gcdService)
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+        guard let profileVC = storyBoard.instantiateViewController(withIdentifier: "ProfileViewController")
+                                    as? ProfileViewController else { return ProfileViewController()}
+        profileVC.model = model
+        profileVC.presentationAssembly = self
+        return profileVC
+    }
+    func avatarController() -> AvatarViewController {
+        let model = AvatarModel(urlService: serviceAssembly.urlService,
+                                imageService: serviceAssembly.imageService)
+        let avatarVC = AvatarViewController()
+        avatarVC.model = model
+        model.delegate = avatarVC
+        return avatarVC
     }
 }

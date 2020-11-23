@@ -53,10 +53,10 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pct-wF-kDV">
-                                <rect key="frame" x="73.666666666666671" y="399" width="227.66666666666663" height="38.333333333333314"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pct-wF-kDV">
+                                <rect key="frame" x="73.666666666666686" y="399" width="228" height="38.333333333333314"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="228" id="aqd-v7-5Aj"/>
+                                    <constraint firstAttribute="width" constant="228" id="aqd-v7-5Aj"/>
                                 </constraints>
                                 <string key="text">UX/UI designer, web-designer
 Moscow, Russia</string>
@@ -64,48 +64,25 @@ Moscow, Russia</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Y1i-nF-UdN">
-                                <rect key="frame" x="59.666666666666657" y="726" width="255.99999999999997" height="40"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fC5-HO-yEA">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
-                                        <color key="backgroundColor" red="0.8666666666666667" green="0.91764705882352937" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="rwR-TD-Od8"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="yxx-Gq-wGQ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
-                                        <state key="normal" title="GCD"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="14"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="gcdBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="od5-dP-bK9"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="una-k9-EwS">
-                                        <rect key="frame" x="136" y="0.0" width="120" height="40"/>
-                                        <color key="backgroundColor" red="0.8666666666666667" green="0.91764705882352937" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="Wyf-D4-EHm"/>
-                                            <constraint firstAttribute="height" constant="40" id="wMB-NY-IKS"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
-                                        <state key="normal" title="Operation"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="14"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="operationBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jgj-Gg-p6K"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="g4s-jh-xBi">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fC5-HO-yEA">
+                                <rect key="frame" x="37.666666666666657" y="718" width="300" height="40"/>
+                                <color key="backgroundColor" red="0.8666666666666667" green="0.91764705882352937" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="rwR-TD-Od8"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="yxx-Gq-wGQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                <state key="normal" title="GCD"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Feu-vS-DpN"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="g4s-jh-xBi">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="color" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
@@ -116,12 +93,12 @@ Moscow, Russia</string>
                             <constraint firstItem="f7C-aj-OUd" firstAttribute="top" secondItem="pct-wF-kDV" secondAttribute="top" id="2Q6-R6-EbB"/>
                             <constraint firstItem="pct-wF-kDV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6Wo-O9-acB"/>
                             <constraint firstItem="15z-Eb-xjE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F3m-NF-OUq"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Y1i-nF-UdN" secondAttribute="bottom" constant="12" id="GDe-ZT-SHW"/>
                             <constraint firstItem="g4s-jh-xBi" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="HSz-cW-C96"/>
                             <constraint firstItem="pct-wF-kDV" firstAttribute="top" secondItem="AeU-2F-pl4" secondAttribute="bottom" constant="24" id="Iav-En-jdn"/>
                             <constraint firstItem="ekn-xL-6fm" firstAttribute="bottom" secondItem="15z-Eb-xjE" secondAttribute="bottom" id="MHq-wK-fqL"/>
                             <constraint firstItem="15z-Eb-xjE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="28" id="NVh-BI-xFX"/>
                             <constraint firstItem="f7C-aj-OUd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OAo-ZK-iNM"/>
+                            <constraint firstItem="fC5-HO-yEA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TLc-mG-jcx"/>
                             <constraint firstItem="AeU-2F-pl4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VMF-0a-Qhb"/>
                             <constraint firstItem="g4s-jh-xBi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VMU-ak-fCJ"/>
                             <constraint firstItem="g4s-jh-xBi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Wee-gs-FXf"/>
@@ -131,7 +108,7 @@ Moscow, Russia</string>
                             <constraint firstAttribute="bottom" secondItem="g4s-jh-xBi" secondAttribute="bottom" id="icz-Jg-37n"/>
                             <constraint firstItem="AeU-2F-pl4" firstAttribute="top" secondItem="5jd-fq-R5R" secondAttribute="top" id="kWk-X9-5x5"/>
                             <constraint firstItem="ekn-xL-6fm" firstAttribute="leading" secondItem="15z-Eb-xjE" secondAttribute="trailing" constant="-32" id="o7X-3n-RE3"/>
-                            <constraint firstItem="Y1i-nF-UdN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="sWm-Vx-qEo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fC5-HO-yEA" secondAttribute="bottom" constant="20" id="q3x-PP-Rnu"/>
                             <constraint firstItem="15z-Eb-xjE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uvP-xo-m3r"/>
                             <constraint firstItem="5jd-fq-R5R" firstAttribute="top" secondItem="15z-Eb-xjE" secondAttribute="bottom" constant="28" id="zyu-99-h1m"/>
                         </constraints>
@@ -139,14 +116,13 @@ Moscow, Russia</string>
                     </view>
                     <connections>
                         <outlet property="editPhotoBtn" destination="ekn-xL-6fm" id="J6Z-2U-yiM"/>
-                        <outlet property="gcdBtn" destination="fC5-HO-yEA" id="Jf1-jW-gd2"/>
                         <outlet property="indicator" destination="g4s-jh-xBi" id="000-ge-IFT"/>
-                        <outlet property="operationBtn" destination="una-k9-EwS" id="Or4-Xy-GJf"/>
                         <outlet property="profileImage" destination="15z-Eb-xjE" id="1gK-8G-clh"/>
                         <outlet property="profileUresInfo" destination="pct-wF-kDV" id="4DK-9V-rT1"/>
                         <outlet property="profileUserInfoField" destination="f7C-aj-OUd" id="qXd-4K-20W"/>
                         <outlet property="profileUserName" destination="5jd-fq-R5R" id="ukW-ky-4pE"/>
                         <outlet property="profileUserNameField" destination="AeU-2F-pl4" id="wUQ-Z5-rxW"/>
+                        <outlet property="saveBtn" destination="fC5-HO-yEA" id="KeT-ur-Faa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

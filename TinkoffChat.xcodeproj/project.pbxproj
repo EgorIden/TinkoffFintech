@@ -37,8 +37,23 @@
 		7453F33A255D97D0000876AD /* RootAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7453F339255D97D0000876AD /* RootAssembly.swift */; };
 		7453F33F255DA3B7000876AD /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7453F33E255DA3B7000876AD /* ConversationModel.swift */; };
 		7453F342255DBFFF000876AD /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7453F341255DBFFE000876AD /* UserProfile.swift */; };
+		7476CD27256BBB4100659400 /* IRequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7476CD26256BBB4100659400 /* IRequestSender.swift */; };
+		7476CD33256BCAF200659400 /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7476CD32256BCAF200659400 /* AvatarViewController.swift */; };
+		7476CD35256BCB1F00659400 /* AvatarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7476CD34256BCB1F00659400 /* AvatarModel.swift */; };
+		7476CD37256BCB4C00659400 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7476CD36256BCB4C00659400 /* AvatarCell.swift */; };
+		7476CD3C256BD38C00659400 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7476CD3B256BD38C00659400 /* ProfileModel.swift */; };
 		7484DE9C2528CBE80031C18B /* ThemesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7484DE9B2528CBE80031C18B /* ThemesViewController.storyboard */; };
 		7484DE9E2528F10D0031C18B /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7484DE9D2528F10C0031C18B /* ThemesViewController.swift */; };
+		748BA101256AB06A007831AC /* RequestsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748BA100256AB06A007831AC /* RequestsFactory.swift */; };
+		748BA104256AB452007831AC /* RequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748BA103256AB452007831AC /* RequestSender.swift */; };
+		748BA10A256ABB0F007831AC /* URLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748BA109256ABB0F007831AC /* URLParser.swift */; };
+		748BA10C256ABB1B007831AC /* ImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748BA10B256ABB1B007831AC /* ImageParser.swift */; };
+		748BA10E256ABB41007831AC /* IParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748BA10D256ABB41007831AC /* IParser.swift */; };
+		748BA110256ACA95007831AC /* IRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748BA10F256ACA95007831AC /* IRequest.swift */; };
+		748BA112256ACABE007831AC /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748BA111256ACABE007831AC /* URLRequest.swift */; };
+		748BA114256ACACE007831AC /* ImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748BA113256ACACE007831AC /* ImageRequest.swift */; };
+		748BA11A256AD834007831AC /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748BA119256AD834007831AC /* ImageService.swift */; };
+		748BA11C256ADEE9007831AC /* URLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748BA11B256ADEE9007831AC /* URLService.swift */; };
 		748D929A252CCFC3006DAD9B /* ThemePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748D9299252CCFC3006DAD9B /* ThemePickerDelegate.swift */; };
 		74ED076A25237C5800DA4380 /* ConversationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED076825237C5800DA4380 /* ConversationsTableViewCell.swift */; };
 		74F35DEF253785300058B6D9 /* OperationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F35DEE253785300058B6D9 /* OperationDataManager.swift */; };
@@ -80,8 +95,23 @@
 		7453F339255D97D0000876AD /* RootAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAssembly.swift; sourceTree = "<group>"; };
 		7453F33E255DA3B7000876AD /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		7453F341255DBFFE000876AD /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		7476CD26256BBB4100659400 /* IRequestSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRequestSender.swift; sourceTree = "<group>"; };
+		7476CD32256BCAF200659400 /* AvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
+		7476CD34256BCB1F00659400 /* AvatarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarModel.swift; sourceTree = "<group>"; };
+		7476CD36256BCB4C00659400 /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
+		7476CD3B256BD38C00659400 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		7484DE9B2528CBE80031C18B /* ThemesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ThemesViewController.storyboard; sourceTree = "<group>"; };
 		7484DE9D2528F10C0031C18B /* ThemesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewController.swift; sourceTree = "<group>"; };
+		748BA100256AB06A007831AC /* RequestsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsFactory.swift; sourceTree = "<group>"; };
+		748BA103256AB452007831AC /* RequestSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSender.swift; sourceTree = "<group>"; };
+		748BA109256ABB0F007831AC /* URLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParser.swift; sourceTree = "<group>"; };
+		748BA10B256ABB1B007831AC /* ImageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
+		748BA10D256ABB41007831AC /* IParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IParser.swift; sourceTree = "<group>"; };
+		748BA10F256ACA95007831AC /* IRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRequest.swift; sourceTree = "<group>"; };
+		748BA111256ACABE007831AC /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
+		748BA113256ACACE007831AC /* ImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequest.swift; sourceTree = "<group>"; };
+		748BA119256AD834007831AC /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		748BA11B256ADEE9007831AC /* URLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLService.swift; sourceTree = "<group>"; };
 		748D9299252CCFC3006DAD9B /* ThemePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePickerDelegate.swift; sourceTree = "<group>"; };
 		74ED076825237C5800DA4380 /* ConversationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsTableViewCell.swift; sourceTree = "<group>"; };
 		74F35DEE253785300058B6D9 /* OperationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationDataManager.swift; sourceTree = "<group>"; };
@@ -122,31 +152,9 @@
 			children = (
 				7444F791250F399B00F2C07D /* AppDelegate.swift */,
 				7444F79A250F399E00F2C07D /* Assets.xcassets */,
+				7444F79C250F399E00F2C07D /* LaunchScreen.storyboard */,
 			);
 			path = SupportingFiles;
-			sourceTree = "<group>";
-		};
-		743AF20B25245BBD00C022E7 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				743AF20C25245C5000C022E7 /* ConfigurableView.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		743F48C42522398600AD158F /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				743AF2162524A03800C022E7 /* ConversationTableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		743F48CF252258E900AD158F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		7441F811255AED6500010A5A /* 3.CoreLayer */ = {
@@ -169,6 +177,7 @@
 		7441F813255AEDA800010A5A /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				748BA0FF256AAE95007831AC /* Network */,
 				7441F814255AEDD100010A5A /* Channel */,
 				7441F815255AEDE200010A5A /* Message */,
 				7441F816255AEE3700010A5A /* CoreData */,
@@ -206,6 +215,7 @@
 		7441F81D255AFAE400010A5A /* 2.ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
+				7476CD29256BBE0E00659400 /* Protocols */,
 				7441F81E255AFAFE00010A5A /* Assembly */,
 				7453F340255DBEFB000876AD /* Modules */,
 			);
@@ -242,8 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				742C5A6E2515F39B0020E275 /* SupportingFiles */,
-				743AF20B25245BBD00C022E7 /* Protocols */,
-				743F48CF252258E900AD158F /* Models */,
 				7453F339255D97D0000876AD /* RootAssembly.swift */,
 				7453F32F255D69C1000876AD /* 1.PresentationLayer */,
 				7441F81D255AFAE400010A5A /* 2.ServiceLayer */,
@@ -259,7 +267,6 @@
 			children = (
 				7453F331255D7351000876AD /* Assembly */,
 				7453F330255D7338000876AD /* Modules */,
-				7444F79C250F399E00F2C07D /* LaunchScreen.storyboard */,
 			);
 			path = 1.PresentationLayer;
 			sourceTree = "<group>";
@@ -270,8 +277,8 @@
 				74F5D71D252B6D77001D8F89 /* ConversationsList */,
 				74F5D71E252B6DB2001D8F89 /* ConversationViewController */,
 				74F5D71F252B6DF1001D8F89 /* ProfileViewController */,
+				7476CD2C256BCA0700659400 /* AvatarViewController */,
 				74F5D720252B6E1B001D8F89 /* ThemesViewController */,
-				743F48C42522398600AD158F /* Cells */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -321,8 +328,9 @@
 		7453F33D255DA33D000876AD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7453F33E255DA3B7000876AD /* ConversationModel.swift */,
 				743AF21425249F9600C022E7 /* MessageCellModel.swift */,
+				74003458253F6C6300385E62 /* FirebaseModels.swift */,
+				7453F33E255DA3B7000876AD /* ConversationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -334,10 +342,125 @@
 				7400345D253F6DE900385E62 /* FirebaseManager.swift */,
 				74F35DEE253785300058B6D9 /* OperationDataManager.swift */,
 				74029F9E253615B1008F17BB /* GCDDataManager.swift */,
-				74003458253F6C6300385E62 /* FirebaseModels.swift */,
-				7453F341255DBFFE000876AD /* UserProfile.swift */,
+				748BA11B256ADEE9007831AC /* URLService.swift */,
+				748BA119256AD834007831AC /* ImageService.swift */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		7476CD28256BBC6D00659400 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				743AF2162524A03800C022E7 /* ConversationTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7476CD29256BBE0E00659400 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				743AF20C25245C5000C022E7 /* ConfigurableView.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7476CD2C256BCA0700659400 /* AvatarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7476CD2F256BCA2100659400 /* Model */,
+				7476CD2E256BCA1F00659400 /* View */,
+				7476CD2D256BCA1C00659400 /* Controller */,
+			);
+			path = AvatarViewController;
+			sourceTree = "<group>";
+		};
+		7476CD2D256BCA1C00659400 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7476CD32256BCAF200659400 /* AvatarViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7476CD2E256BCA1F00659400 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7476CD36256BCB4C00659400 /* AvatarCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7476CD2F256BCA2100659400 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7476CD34256BCB1F00659400 /* AvatarModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7476CD38256BD30B00659400 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7444F795250F399B00F2C07D /* ProfileViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7476CD39256BD30E00659400 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7444F797250F399B00F2C07D /* Profile.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7476CD3A256BD30F00659400 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7453F341255DBFFE000876AD /* UserProfile.swift */,
+				7476CD3B256BD38C00659400 /* ProfileModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		748BA0FF256AAE95007831AC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				748BA102256AB436007831AC /* RequestManager */,
+				748BA105256AB8E3007831AC /* Parsers */,
+				748BA106256AB8FB007831AC /* Requests */,
+				748BA100256AB06A007831AC /* RequestsFactory.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		748BA102256AB436007831AC /* RequestManager */ = {
+			isa = PBXGroup;
+			children = (
+				7476CD26256BBB4100659400 /* IRequestSender.swift */,
+				748BA103256AB452007831AC /* RequestSender.swift */,
+			);
+			path = RequestManager;
+			sourceTree = "<group>";
+		};
+		748BA105256AB8E3007831AC /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				748BA10D256ABB41007831AC /* IParser.swift */,
+				748BA109256ABB0F007831AC /* URLParser.swift */,
+				748BA10B256ABB1B007831AC /* ImageParser.swift */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
+		748BA106256AB8FB007831AC /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				748BA10F256ACA95007831AC /* IRequest.swift */,
+				748BA111256ACABE007831AC /* URLRequest.swift */,
+				748BA113256ACACE007831AC /* ImageRequest.swift */,
+			);
+			path = Requests;
 			sourceTree = "<group>";
 		};
 		74F5D71D252B6D77001D8F89 /* ConversationsList */ = {
@@ -354,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				7453F33D255DA33D000876AD /* Model */,
+				7476CD28256BBC6D00659400 /* View */,
 				7453F33B255DA339000876AD /* Controller */,
 			);
 			path = ConversationViewController;
@@ -362,8 +486,9 @@
 		74F5D71F252B6DF1001D8F89 /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7444F795250F399B00F2C07D /* ProfileViewController.swift */,
-				7444F797250F399B00F2C07D /* Profile.storyboard */,
+				7476CD3A256BD30F00659400 /* Model */,
+				7476CD39256BD30E00659400 /* View */,
+				7476CD38256BD30B00659400 /* Controller */,
 			);
 			path = ProfileViewController;
 			sourceTree = "<group>";
@@ -523,13 +648,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				748BA104256AB452007831AC /* RequestSender.swift in Sources */,
 				748D929A252CCFC3006DAD9B /* ThemePickerDelegate.swift in Sources */,
 				741836FA255C4D6800F23E96 /* ServiceAssembly.swift in Sources */,
+				7476CD3C256BD38C00659400 /* ProfileModel.swift in Sources */,
 				74003459253F6C6300385E62 /* FirebaseModels.swift in Sources */,
+				748BA10E256ABB41007831AC /* IParser.swift in Sources */,
 				743AF21525249F9600C022E7 /* MessageCellModel.swift in Sources */,
+				748BA114256ACACE007831AC /* ImageRequest.swift in Sources */,
 				743AF2112524657700C022E7 /* ConversationViewController.swift in Sources */,
 				7444F796250F399B00F2C07D /* ProfileViewController.swift in Sources */,
 				7444F792250F399B00F2C07D /* AppDelegate.swift in Sources */,
+				7476CD27256BBB4100659400 /* IRequestSender.swift in Sources */,
 				742F0A592549C6B600B37F78 /* DBMessage+CoreDataClass.swift in Sources */,
 				7453F342255DBFFF000876AD /* UserProfile.swift in Sources */,
 				74029F9F253615B1008F17BB /* GCDDataManager.swift in Sources */,
@@ -541,16 +671,26 @@
 				7453F33F255DA3B7000876AD /* ConversationModel.swift in Sources */,
 				743F48C1252235BD00AD158F /* ConversationsListViewController.swift in Sources */,
 				7453F338255D8793000876AD /* PresentationAssembly.swift in Sources */,
+				748BA10C256ABB1B007831AC /* ImageParser.swift in Sources */,
 				7453F336255D7D2C000876AD /* ConversationsListModel.swift in Sources */,
+				748BA11C256ADEE9007831AC /* URLService.swift in Sources */,
 				743AF20D25245C5000C022E7 /* ConfigurableView.swift in Sources */,
 				74F35DEF253785300058B6D9 /* OperationDataManager.swift in Sources */,
 				7484DE9E2528F10D0031C18B /* ThemesViewController.swift in Sources */,
 				743F48D12522594600AD158F /* ConversationCell.swift in Sources */,
+				748BA110256ACA95007831AC /* IRequest.swift in Sources */,
 				741836F8255C3B6E00F23E96 /* CoreDataManager.swift in Sources */,
 				7453F33A255D97D0000876AD /* RootAssembly.swift in Sources */,
+				7476CD37256BCB4C00659400 /* AvatarCell.swift in Sources */,
 				742F0A5C2549C6B600B37F78 /* DBChannel+CoreDataProperties.swift in Sources */,
+				748BA101256AB06A007831AC /* RequestsFactory.swift in Sources */,
+				7476CD33256BCAF200659400 /* AvatarViewController.swift in Sources */,
+				748BA11A256AD834007831AC /* ImageService.swift in Sources */,
+				748BA112256ACABE007831AC /* URLRequest.swift in Sources */,
 				74ED076A25237C5800DA4380 /* ConversationsTableViewCell.swift in Sources */,
+				7476CD35256BCB1F00659400 /* AvatarModel.swift in Sources */,
 				7441F81B255AFABD00010A5A /* CoreDataAssembly.swift in Sources */,
+				748BA10A256ABB0F007831AC /* URLParser.swift in Sources */,
 				7400345E253F6DE900385E62 /* FirebaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -45,6 +45,26 @@ Moscow, Russia</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDt-dT-35F">
+                                <rect key="frame" x="37.666666666666657" y="648" width="300" height="40"/>
+                                <color key="backgroundColor" red="0.18823529411764706" green="0.45882352941176469" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="1XF-G8-e3T"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="A3T-q9-fgF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" white="0.91834332190000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="editBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ekh-kA-zz5"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fC5-HO-yEA">
                                 <rect key="frame" x="28.5" y="496" width="263" height="40"/>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -60,13 +80,31 @@ Moscow, Russia</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+<<<<<<< Updated upstream:TinkoffChat/Views/Storyboards/Base.lproj/Main.storyboard
                                     <action selector="saveProfileButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="652-Dr-iSo"/>
                                 </connections>
                             </button>
+=======
+                                    <action selector="saveBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Feu-vS-DpN"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="a5M-ST-82W">
+                                <rect key="frame" x="177.66666666666666" y="396" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile" translatesAutoresizingMaskIntoConstraints="NO" id="ehp-jF-wIT">
+                                <rect key="frame" x="67.666666666666686" y="72" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="GOn-52-Wrg"/>
+                                    <constraint firstAttribute="height" constant="240" id="rRS-Em-29Q"/>
+                                </constraints>
+                            </imageView>
+>>>>>>> Stashed changes:TinkoffChat/1.PresentationLayer/Modules/ProfileViewController/View/Base.lproj/Profile.storyboard
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ehp-jF-wIT" firstAttribute="centerX" secondItem="15z-Eb-xjE" secondAttribute="centerX" id="07x-IK-ZO1"/>
                             <constraint firstItem="ekn-xL-6fm" firstAttribute="trailing" secondItem="15z-Eb-xjE" secondAttribute="trailing" id="0iQ-N0-1R8"/>
+<<<<<<< Updated upstream:TinkoffChat/Views/Storyboards/Base.lproj/Main.storyboard
                             <constraint firstItem="15z-Eb-xjE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Cvf-Sw-GIF"/>
                             <constraint firstAttribute="bottom" secondItem="fC5-HO-yEA" secondAttribute="bottom" constant="32" id="DDT-3f-C8j"/>
                             <constraint firstItem="5jd-fq-R5R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JgM-Rd-uxd"/>
@@ -75,16 +113,49 @@ Moscow, Russia</string>
                             <constraint firstItem="pct-wF-kDV" firstAttribute="top" secondItem="5jd-fq-R5R" secondAttribute="bottom" constant="32" id="Zw6-c3-WId"/>
                             <constraint firstItem="15z-Eb-xjE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="2" id="gTz-5O-Llr"/>
                             <constraint firstItem="5jd-fq-R5R" firstAttribute="top" secondItem="15z-Eb-xjE" secondAttribute="bottom" constant="32" id="ij1-L9-k9X"/>
+=======
+                            <constraint firstItem="f7C-aj-OUd" firstAttribute="top" secondItem="pct-wF-kDV" secondAttribute="top" id="2Q6-R6-EbB"/>
+                            <constraint firstItem="pct-wF-kDV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6Wo-O9-acB"/>
+                            <constraint firstItem="a5M-ST-82W" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BB5-V6-Ocx"/>
+                            <constraint firstItem="15z-Eb-xjE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F3m-NF-OUq"/>
+                            <constraint firstItem="pct-wF-kDV" firstAttribute="top" secondItem="AeU-2F-pl4" secondAttribute="bottom" constant="24" id="Iav-En-jdn"/>
+                            <constraint firstItem="ekn-xL-6fm" firstAttribute="bottom" secondItem="15z-Eb-xjE" secondAttribute="bottom" id="MHq-wK-fqL"/>
+                            <constraint firstItem="15z-Eb-xjE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="28" id="NVh-BI-xFX"/>
+                            <constraint firstItem="f7C-aj-OUd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OAo-ZK-iNM"/>
+                            <constraint firstItem="fC5-HO-yEA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TLc-mG-jcx"/>
+                            <constraint firstItem="a5M-ST-82W" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="V4X-FV-paS"/>
+                            <constraint firstItem="AeU-2F-pl4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VMF-0a-Qhb"/>
+                            <constraint firstItem="HDt-dT-35F" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xfg-ur-pav"/>
+                            <constraint firstItem="fC5-HO-yEA" firstAttribute="top" secondItem="HDt-dT-35F" secondAttribute="bottom" constant="30" id="Xws-NV-ayu"/>
+                            <constraint firstItem="AeU-2F-pl4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xxq-kC-m29"/>
+                            <constraint firstItem="AeU-2F-pl4" firstAttribute="leading" secondItem="5jd-fq-R5R" secondAttribute="leading" id="byx-OP-xUW"/>
+                            <constraint firstItem="5jd-fq-R5R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c8v-bb-Ud3"/>
+                            <constraint firstItem="ehp-jF-wIT" firstAttribute="top" secondItem="15z-Eb-xjE" secondAttribute="top" id="jYE-fU-cVQ"/>
+                            <constraint firstItem="AeU-2F-pl4" firstAttribute="top" secondItem="5jd-fq-R5R" secondAttribute="top" id="kWk-X9-5x5"/>
+>>>>>>> Stashed changes:TinkoffChat/1.PresentationLayer/Modules/ProfileViewController/View/Base.lproj/Profile.storyboard
                             <constraint firstItem="ekn-xL-6fm" firstAttribute="leading" secondItem="15z-Eb-xjE" secondAttribute="trailing" constant="-32" id="o7X-3n-RE3"/>
                             <constraint firstItem="fC5-HO-yEA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pP2-5d-hPS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+<<<<<<< Updated upstream:TinkoffChat/Views/Storyboards/Base.lproj/Main.storyboard
                         <outlet property="profileImage" destination="15z-Eb-xjE" id="1gK-8G-clh"/>
+=======
+                        <outlet property="editBtn" destination="HDt-dT-35F" id="r5F-5E-Z9n"/>
+                        <outlet property="editPhotoBtn" destination="ekn-xL-6fm" id="J6Z-2U-yiM"/>
+                        <outlet property="indicator" destination="a5M-ST-82W" id="2EN-d4-zSX"/>
+                        <outlet property="mainImage" destination="15z-Eb-xjE" id="1gK-8G-clh"/>
+>>>>>>> Stashed changes:TinkoffChat/1.PresentationLayer/Modules/ProfileViewController/View/Base.lproj/Profile.storyboard
                         <outlet property="profileUresInfo" destination="pct-wF-kDV" id="4DK-9V-rT1"/>
                         <outlet property="profileUserName" destination="5jd-fq-R5R" id="ukW-ky-4pE"/>
+<<<<<<< Updated upstream:TinkoffChat/Views/Storyboards/Base.lproj/Main.storyboard
                         <outlet property="saveProfileButton" destination="fC5-HO-yEA" id="jeq-l2-0fs"/>
+=======
+                        <outlet property="profileUserNameField" destination="AeU-2F-pl4" id="wUQ-Z5-rxW"/>
+                        <outlet property="saveBtn" destination="fC5-HO-yEA" id="KeT-ur-Faa"/>
+                        <outlet property="secondImage" destination="ehp-jF-wIT" id="68n-KY-Tdm"/>
+>>>>>>> Stashed changes:TinkoffChat/1.PresentationLayer/Modules/ProfileViewController/View/Base.lproj/Profile.storyboard
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -93,6 +164,7 @@ Moscow, Russia</string>
         </scene>
     </scenes>
     <resources>
+        <image name="Profile" width="240" height="240"/>
         <image name="photo" width="240" height="240"/>
     </resources>
 </document>

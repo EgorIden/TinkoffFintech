@@ -41,6 +41,7 @@ class ConversationViewController: UIViewController {
     var channelId: String = ""
     var myId: String = ""
     var model: IConversationModel?
+    private var emblem: EmblemAnimation?
     private var containerBottomConstraint: NSLayoutConstraint?
     private lazy var fetchedResultsController: NSFetchedResultsController<DBMessage>? = {
         let fetchRequest: NSFetchRequest<DBMessage> = DBMessage.fetchRequest()
@@ -74,6 +75,10 @@ class ConversationViewController: UIViewController {
             name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
             name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.addAnimatioin()
+    }
+    private func addAnimatioin(){
+        self.emblem = EmblemAnimation(view: self.view)
     }
     private func fetchMessages(channelId: String) {
         print(channelId)

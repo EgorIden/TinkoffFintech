@@ -16,6 +16,7 @@ var model: IConversationsModel?
     var presentationAssembly: IPresentationAssembly?
     private let themeVC = ThemesViewController()
     private let myId = UIDevice.current.identifierForVendor?.uuidString ?? "1111222333"
+    private var emblem: EmblemAnimation?
 
     private lazy var fetchedResultsController: NSFetchedResultsController<DBChannel> = {
         let fetchRequest: NSFetchRequest<DBChannel> = DBChannel.fetchRequest()
@@ -37,8 +38,11 @@ var model: IConversationsModel?
         self.tableView.dataSource = self
         self.setupBarButtons()
         self.fetchChannels()
+        self.addAnimatioin()
     }
-
+    private func addAnimatioin(){
+        self.emblem = EmblemAnimation(view: self.view)
+    }
     private func fetchChannels() {
         do {
             try fetchedResultsController.performFetch()

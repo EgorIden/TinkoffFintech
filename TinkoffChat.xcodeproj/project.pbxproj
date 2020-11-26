@@ -55,6 +55,7 @@
 		748BA11A256AD834007831AC /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748BA119256AD834007831AC /* ImageService.swift */; };
 		748BA11C256ADEE9007831AC /* URLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748BA11B256ADEE9007831AC /* URLService.swift */; };
 		748D929A252CCFC3006DAD9B /* ThemePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748D9299252CCFC3006DAD9B /* ThemePickerDelegate.swift */; };
+		7491AF0C25703669003710A9 /* EmblemAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7491AF0B25703669003710A9 /* EmblemAnimation.swift */; };
 		74ED076A25237C5800DA4380 /* ConversationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74ED076825237C5800DA4380 /* ConversationsTableViewCell.swift */; };
 		74F35DEF253785300058B6D9 /* OperationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F35DEE253785300058B6D9 /* OperationDataManager.swift */; };
 		7EA733E2D4BA5ECA4076CC46 /* Pods_TinkoffChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 014FD6E9DF7034A200C32D7C /* Pods_TinkoffChat.framework */; };
@@ -113,6 +114,7 @@
 		748BA119256AD834007831AC /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		748BA11B256ADEE9007831AC /* URLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLService.swift; sourceTree = "<group>"; };
 		748D9299252CCFC3006DAD9B /* ThemePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePickerDelegate.swift; sourceTree = "<group>"; };
+		7491AF0B25703669003710A9 /* EmblemAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmblemAnimation.swift; sourceTree = "<group>"; };
 		74ED076825237C5800DA4380 /* ConversationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsTableViewCell.swift; sourceTree = "<group>"; };
 		74F35DEE253785300058B6D9 /* OperationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationDataManager.swift; sourceTree = "<group>"; };
 		7D9AF138F85DB24D2C6CE591 /* Pods-TinkoffChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffChat.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffChat/Pods-TinkoffChat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 		7453F330255D7338000876AD /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				7491AF0A2570364E003710A9 /* Animation */,
 				74F5D71D252B6D77001D8F89 /* ConversationsList */,
 				74F5D71E252B6DB2001D8F89 /* ConversationViewController */,
 				74F5D71F252B6DF1001D8F89 /* ProfileViewController */,
@@ -463,6 +466,14 @@
 			path = Requests;
 			sourceTree = "<group>";
 		};
+		7491AF0A2570364E003710A9 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				7491AF0B25703669003710A9 /* EmblemAnimation.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		74F5D71D252B6D77001D8F89 /* ConversationsList */ = {
 			isa = PBXGroup;
 			children = (
@@ -649,6 +660,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				748BA104256AB452007831AC /* RequestSender.swift in Sources */,
+				7491AF0C25703669003710A9 /* EmblemAnimation.swift in Sources */,
 				748D929A252CCFC3006DAD9B /* ThemePickerDelegate.swift in Sources */,
 				741836FA255C4D6800F23E96 /* ServiceAssembly.swift in Sources */,
 				7476CD3C256BD38C00659400 /* ProfileModel.swift in Sources */,

@@ -35,6 +35,7 @@ class ThemesViewController: UIViewController {
 
     var themeHandler: ((UIColor) -> Void)?
     weak var delegate: ThemePickerDelegate?
+    private var emblem: EmblemAnimation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,10 +51,12 @@ class ThemesViewController: UIViewController {
         self.classicLbl.addGestureRecognizer(classicGesture)
         self.dayLbl.addGestureRecognizer(dayGesture)
         self.nightLbl.addGestureRecognizer(nightGesture)
-
+        self.addAnimatioin()
         //print(classicBtn.currentTitle, dayBtn.currentTitle, nightBtn.currentTitle)
     }
-
+    private func addAnimatioin(){
+        self.emblem = EmblemAnimation(view: self.view)
+    }
     @IBAction func changeTheme(sender: UIButton) {
         switch sender.tag {
             case 0:

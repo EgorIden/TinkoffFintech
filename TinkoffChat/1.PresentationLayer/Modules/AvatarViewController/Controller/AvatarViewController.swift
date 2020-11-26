@@ -22,13 +22,17 @@ class AvatarViewController: UIViewController, IAvatarModelDelegate {
     private var dataSource = [Image]()
     var model: IAvatarModel?
     var imageHandler: ((UIImage?) -> Void)?
+    private var emblem: EmblemAnimation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupViews()
         self.model?.fetchURL()
+        self.addAnimatioin()
     }
-
+    private func addAnimatioin(){
+        self.emblem = EmblemAnimation(view: self.view)
+    }
     private func setupViews() {
         collectionView.dataSource = self
         collectionView.delegate = self

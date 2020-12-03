@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -13,25 +13,25 @@
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" id="BYZ-38-t0r" customClass="ProfileViewController" customModule="TinkoffChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile" translatesAutoresizingMaskIntoConstraints="NO" id="XEc-rA-e3m">
-                                <rect key="frame" x="67.666666666666686" y="72" width="240" height="240"/>
+                                <rect key="frame" x="87" y="72" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="U4c-Tg-dBL"/>
                                     <constraint firstAttribute="width" constant="240" id="xYg-gf-ujA"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="15z-Eb-xjE">
-                                <rect key="frame" x="67.666666666666686" y="72" width="240" height="240"/>
+                                <rect key="frame" x="87" y="72" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="AOV-pE-OsZ"/>
                                     <constraint firstAttribute="height" constant="240" id="ocb-Fa-aMX"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekn-xL-6fm">
-                                <rect key="frame" x="275.66666666666669" y="280" width="32" height="32"/>
+                                <rect key="frame" x="295" y="280" width="32" height="32"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
@@ -39,18 +39,18 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Surname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AeU-2F-pl4">
-                                <rect key="frame" x="88.000000000000014" y="340" width="199.33333333333337" height="35"/>
+                                <rect key="frame" x="107.33333333333333" y="340" width="199.33333333333337" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marina Dudarenko" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jd-fq-R5R">
-                                <rect key="frame" x="88.000000000000014" y="340" width="199.33333333333337" height="28.666666666666686"/>
+                                <rect key="frame" x="107.33333333333333" y="340" width="199.33333333333337" height="28.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write some info about you..." translatesAutoresizingMaskIntoConstraints="NO" id="f7C-aj-OUd">
-                                <rect key="frame" x="73.666666666666686" y="399" width="228" height="126"/>
+                                <rect key="frame" x="93" y="399" width="228" height="126"/>
                                 <color key="backgroundColor" red="0.93142734439151642" green="0.97828348095733642" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="228" id="PJR-ST-OMC"/>
@@ -61,7 +61,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pct-wF-kDV">
-                                <rect key="frame" x="73.666666666666686" y="399" width="228" height="38.333333333333314"/>
+                                <rect key="frame" x="93" y="399" width="228" height="38.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="228" id="aqd-v7-5Aj"/>
                                 </constraints>
@@ -72,7 +72,7 @@ Moscow, Russia</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfk-M0-T5s">
-                                <rect key="frame" x="37.666666666666657" y="638" width="300" height="40"/>
+                                <rect key="frame" x="57" y="732" width="300" height="40"/>
                                 <color key="backgroundColor" red="0.20923178764755046" green="0.54221816287573732" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="i7h-u9-n2X"/>
@@ -92,7 +92,7 @@ Moscow, Russia</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fC5-HO-yEA">
-                                <rect key="frame" x="37.666666666666657" y="718" width="300" height="40"/>
+                                <rect key="frame" x="57" y="802" width="300" height="40"/>
                                 <color key="backgroundColor" red="0.8666666666666667" green="0.91764705882352937" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rwR-TD-Od8"/>
@@ -111,7 +111,7 @@ Moscow, Russia</string>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="NNE-pn-atZ">
-                                <rect key="frame" x="177.66666666666666" y="396" width="20" height="20"/>
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,7 +127,7 @@ Moscow, Russia</string>
                             <constraint firstItem="ekn-xL-6fm" firstAttribute="bottom" secondItem="15z-Eb-xjE" secondAttribute="bottom" id="MHq-wK-fqL"/>
                             <constraint firstItem="15z-Eb-xjE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="28" id="NVh-BI-xFX"/>
                             <constraint firstItem="f7C-aj-OUd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OAo-ZK-iNM"/>
-                            <constraint firstItem="fC5-HO-yEA" firstAttribute="top" secondItem="Xfk-M0-T5s" secondAttribute="bottom" constant="40" id="R8k-g8-MKS"/>
+                            <constraint firstItem="fC5-HO-yEA" firstAttribute="top" secondItem="Xfk-M0-T5s" secondAttribute="bottom" constant="30" id="R8k-g8-MKS"/>
                             <constraint firstItem="fC5-HO-yEA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TLc-mG-jcx"/>
                             <constraint firstItem="Xfk-M0-T5s" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="V2T-6w-3Zq"/>
                             <constraint firstItem="AeU-2F-pl4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VMF-0a-Qhb"/>

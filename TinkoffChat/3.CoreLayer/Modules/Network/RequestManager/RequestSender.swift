@@ -15,6 +15,7 @@ class RequestSender: IRequestSender {
             completionHandler(Result.error("url string can't be parsed to URL"))
             return
         }
+        print("url request----> \(urlRequest)")
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let slf = self else { return }
             let task = slf.session.dataTask(with: urlRequest) { (data: Data?,

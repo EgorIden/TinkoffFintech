@@ -40,16 +40,16 @@ var model: IConversationsModel?
         self.fetchChannels()
         self.addAnimatioin()
     }
-    private func addAnimatioin(){
+    private func addAnimatioin() {
         self.emblem = EmblemAnimation(view: self.view)
     }
     private func fetchChannels() {
+        self.model?.fetchChannels()
         do {
             try fetchedResultsController.performFetch()
         } catch {
             print("fetching channels error -> \(error.localizedDescription)")
         }
-        model?.fetchChannels()
         print("fetched objects -> \(fetchedResultsController.fetchedObjects?.count)")
     }
     // MARK: Setup UI

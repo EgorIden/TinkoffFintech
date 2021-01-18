@@ -82,13 +82,13 @@ class ConversationViewController: UIViewController {
     }
     private func fetchMessages(channelId: String) {
         print(channelId)
+        self.model?.fetchMessages(channelId: channelId)
         do {
             try fetchedResultsController?.performFetch()
             tableView.reloadData()
         } catch {
             print("fetching messages error -> \(error.localizedDescription)")
         }
-        model?.fetchMessages(channelId: channelId)
         print("fetched messages -> \(fetchedResultsController?.fetchedObjects?.count)")
     }
     // UI settings

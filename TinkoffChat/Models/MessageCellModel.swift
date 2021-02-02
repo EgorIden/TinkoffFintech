@@ -14,10 +14,10 @@ struct MessageCellModel {
     let text: String
     let isOutput: Bool
     
-    init(message: Message, id: String){
+    init(message: Message, myID: String){
         self.senderName = message.senderName
         self.text = message.content
-        if message.senderId != id{
+        if message.senderId != myID{
             self.isOutput = false
         }else{
             self.isOutput = true

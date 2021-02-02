@@ -10,11 +10,12 @@ import UIKit
 import Firebase
 
 class FirebaseManager {
+    //private let coreDataMnager = CoreDataManager()
     private lazy var db = Firestore.firestore()
     private lazy var channelsCollection = db.collection("channels")
     
     func addChannel(channel: Channel){
-        var channelInfo: [String: Any] = [
+        let channelInfo: [String: Any] = [
             "identifier": channel.identifier,
             "name": channel.name,
             "lastMessage": channel.lastMessage,
@@ -48,6 +49,9 @@ class FirebaseManager {
                 print("count \(channels.count)")
                 let filtredChannels = channels.filter { $0.identifier != "" && $0.name != ""}
                 print("filter \(filtredChannels.count)")
+                
+                //add to coredata
+                CoreDataManager.shared.saveChannelToDB(channels: filtredChannels)
                 DispatchQueue.main.async {
                     completion(filtredChannels)
                 }
@@ -80,6 +84,8 @@ class FirebaseManager {
                                           senderName: senderName ?? "No name")
                     return message
                 }
+                print("Messages-> \(messages.count)")
+                CoreDataManager.shared.saveMessageToDB(id: id, messages: messages)
                 DispatchQueue.main.async {
                     completion(messages)
                 }

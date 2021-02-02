@@ -8,10 +8,21 @@
 
 import UIKit
 import Firebase
-
-class FirebaseManager {
-    private lazy var db = Firestore.firestore()
-    private lazy var channelsCollection = db.collection("channels")
+protocol IFirebaseService {
+    func addChannel(channel: Channel)
+    func fetchChannels(completion: @escaping () -> Void)
+    func fetchMessages(identifier: String, completion: @escaping () -> Void)
+    func sendMessage(senderId: String, channelId: String, message: String)
+    func deleteChannel(channelId: String)
+}
+class FirebaseManager: IFirebaseService {
+    private lazy var database = Firestore.firestore()
+    private lazy var channelsCollection = database.collection("channels")
+    let coreDataService: ICoreDataService
+    
+    init(coreDataService: ICoreDataService) {
+        self.coreDataService = coreDataService
+    }
     
     // MARK: Add channel
     func addChannel(channel: Channel) {
@@ -22,41 +33,6 @@ class FirebaseManager {
             "lastActivity": channel.lastActivity]
         channelsCollection.addDocument(data: channelInfo)
     }
-    
-    //text channesl
-//    let testChannels: [Channel] = [
-//        Channel(identifier: "23113212",
-//                name: "Mr. White",
-//                lastMessage: "Hello",
-//                lastActivity: Timestamp.init(date: Date.init()).dateValue()),
-//        Channel(identifier: "21212112",
-//                name: "Mr. Orange",
-//                lastMessage: "Hello",
-//                lastActivity: Timestamp.init(date: Date.init()).dateValue()),
-//        Channel(identifier: "565656",
-//                name: "Mr. Blonde",
-//                lastMessage: "Hello",
-//                lastActivity: Timestamp.init(date: Date.init()).dateValue()),
-//        Channel(identifier: "454545",
-//                name: "Nice Guy",
-//                lastMessage: "Hello",
-//                lastActivity: Timestamp.init(date: Date.init()).dateValue()),
-//        Channel(identifier: "95955",
-//                name: "Nice Red",
-//                lastMessage: "Hello",
-//                lastActivity: Timestamp.init(date: Date.init()).dateValue())]
-//
-//    func fetchChannels(completion: @escaping () -> Void) {
-//        DispatchQueue.global().async { [weak self] in
-//            guard let slf = self else { return }
-//            print("count channels -> \(slf.testChannels.count)")
-//            //add to coredata
-//            CoreDataManager.shared.saveChannelToDB(channels: slf.testChannels)
-//            DispatchQueue.main.async {
-//                    completion()
-//                }
-//            }
-//        }
     
     // MARK: Fetch channels
     func fetchChannels(completion: @escaping () -> Void) {
@@ -81,7 +57,7 @@ class FirebaseManager {
                 }
                 print("count channels -> \(channels.count)")
                 //add to coredata
-                CoreDataManager.shared.saveChannelToDB(channels: channels)
+                slf.coreDataService.saveChannels(channels: channels)
                 DispatchQueue.main.async {
                     completion()
                 }
@@ -89,10 +65,10 @@ class FirebaseManager {
         }
     }
     // MARK: Fetch messages
-    func fetchMessages(id: String, completion: @escaping ()->Void) {
+    func fetchMessages(identifier: String, completion: @escaping ()->Void) {
         DispatchQueue.global().async { [weak self] in
             guard let slf = self else{ return }
-            let messageRef = slf.channelsCollection.document(id).collection("messages")
+            let messageRef = slf.channelsCollection.document(identifier).collection("messages")
             messageRef.addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("no documents")
@@ -112,7 +88,7 @@ class FirebaseManager {
                     return message
                 }
                 print("Messages-> \(messages.count)")
-                CoreDataManager.shared.saveMessageToDB(id: id, messages: messages)
+                slf.coreDataService.saveMessages(identifier: identifier, messages: messages)
                 DispatchQueue.main.async {
                     completion()
                 }
@@ -129,5 +105,16 @@ class FirebaseManager {
             "senderId": senderId,
             "senderName": "Mr. Orange"
         ])
+    }
+    // MARK: Delete channel
+    func deleteChannel(channelId: String) {
+        let channel = channelsCollection.document(channelId)
+        channel.delete { error in
+            if let error = error {
+                print("Deleting channel error: \(error)")
+            } else {
+                self.coreDataService.deleteChannel(channelId: channelId)
+            }
+        }
     }
 }

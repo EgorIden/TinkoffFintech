@@ -14,6 +14,7 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    private let rootAssembly = RootAssembly()
     
     //Change to false to stop loggign
     var logFlag = false
@@ -29,7 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         printLogsWith(message: "Application launching and still <Inactive>: <\(#function)>", flag: logFlag)
         FirebaseApp.configure()
-        self.setCoreData()
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let navigationVC = rootAssembly.presentationAssembly.navigationController()
+        window?.rootViewController = navigationVC
+        window?.makeKeyAndVisible()
+        //self.setCoreData()
         return true
     }
 
@@ -66,11 +72,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard flag else {return}
         print(message)
     }
-    
-    func setCoreData(){
-        CoreDataManager.shared.enableObservers()
-        CoreDataManager.shared.didUpdateDatabase = { dbStack in
-            dbStack.bdStatistic()
-        }
-    }
+//
+//    func setCoreData(){
+//        CoreDataManager.shared.enableObservers()
+//        CoreDataManager.shared.didUpdateDatabase = { dbStack in
+//            dbStack.bdStatistic()
+//        }
+//    }
 }

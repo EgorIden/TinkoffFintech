@@ -9,8 +9,10 @@
 import Foundation
 protocol ICoreAssembly {
     var coreDataStack: CoreDataStack { get }
+    var requestSender: IRequestSender { get }
 }
 
 class CoreAssembly: ICoreAssembly {
     lazy var coreDataStack: CoreDataStack = CoreDataStack.shared
+    lazy var requestSender: IRequestSender = RequestSender()
 }

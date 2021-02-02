@@ -1,0 +1,4 @@
+#1/usr/bin/env bash
+
+xcodebuild clean build-for-testing -scheme 'TinkoffChat' -destination 'platform=iOS Simulator,name=iPhone 11'
+echo '**SUCESS**'

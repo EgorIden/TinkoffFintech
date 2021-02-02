@@ -11,6 +11,8 @@ protocol IServiceAssembly {
     var firebaseService: IFirebaseService { get }
     var gcdService: GCDDataManager { get }
     var coreDataService: ICoreDataService { get }
+    var urlService: IURLService { get }
+    var imageService: IImageService { get }
 }
 class ServiceAssembly: IServiceAssembly {
     private let coreAssembly: ICoreAssembly
@@ -21,5 +23,6 @@ class ServiceAssembly: IServiceAssembly {
     lazy var firebaseService: IFirebaseService = FirebaseManager(coreDataService: coreDataService)
     lazy var gcdService: GCDDataManager = GCDDataManager()
     lazy var coreDataService: ICoreDataService = CoreDataManager(coreData: coreAssembly.coreDataStack)
-    
+    lazy var urlService: IURLService = URLService(requestSender: coreAssembly.requestSender)
+    lazy var imageService: IImageService = ImageService(requestSender: coreAssembly.requestSender)
 }

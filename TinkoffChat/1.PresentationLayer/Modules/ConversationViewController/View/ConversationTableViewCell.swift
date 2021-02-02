@@ -29,6 +29,7 @@ class ConversationTableViewCell: UITableViewCell {
         backgroundColor = .clear
         bubbleBackgroundView.layer.cornerRadius = 10
         bubbleBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        bubbleBackgroundView.backgroundColor = .white
         addSubview(bubbleBackgroundView)
 
         nameLabel.frame = CGRect(x: 0, y: 0, width: 60, height: 20)
@@ -38,6 +39,7 @@ class ConversationTableViewCell: UITableViewCell {
         
         messageLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 20)
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.messageLabel.textColor = .black
         messageLabel.numberOfLines = 0
         addSubview(messageLabel)
 
@@ -75,13 +77,9 @@ extension ConversationTableViewCell: ConfigurableView {
         self.nameLabel.text = model.senderName
 
         if model.isOutput {
-            self.bubbleBackgroundView.backgroundColor = .white
-            self.messageLabel.textColor = .black
             self.leadingConstraint.isActive = false
             self.trailingConstraint.isActive = true
         } else {
-            self.bubbleBackgroundView.backgroundColor = .lightGray
-            self.messageLabel.textColor = .white
             self.leadingConstraint.isActive = true
             self.trailingConstraint.isActive = false
 

@@ -12,15 +12,16 @@ import CoreData
 
 class ConversationsListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    var model: IConversationsModel?
+var model: IConversationsModel?
     var presentationAssembly: IPresentationAssembly?
     private let themeVC = ThemesViewController()
     private let myId = UIDevice.current.identifierForVendor?.uuidString ?? "1111222333"
-    
+    private var emblem: EmblemAnimation?
+
     private lazy var fetchedResultsController: NSFetchedResultsController<DBChannel> = {
         let fetchRequest: NSFetchRequest<DBChannel> = DBChannel.fetchRequest()
         let sortDescriptors = [NSSortDescriptor(key: "name", ascending: true),
-                           NSSortDescriptor(key: "lastActivity", ascending: false)]
+                           NSSortDescriptor(key: "lastActivity", ascending: true)]
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.fetchBatchSize = 20
         guard let context = model?.getContext() else { return NSFetchedResultsController() }
@@ -30,22 +31,25 @@ class ConversationsListViewController: UIViewController {
         fetchedResultsController.delegate = self
         return fetchedResultsController
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.setupBarButtons()
         self.fetchChannels()
+        //self.addAnimatioin()
     }
-    
+    private func addAnimatioin() {
+        self.emblem = EmblemAnimation(view: self.view)
+    }
     private func fetchChannels() {
+        self.model?.fetchChannels()
         do {
             try fetchedResultsController.performFetch()
         } catch {
             print("fetching channels error -> \(error.localizedDescription)")
         }
-        model?.fetchChannels()
         print("fetched objects -> \(fetchedResultsController.fetchedObjects?.count)")
     }
     // MARK: Setup UI
@@ -65,11 +69,8 @@ class ConversationsListViewController: UIViewController {
         navigationItem.rightBarButtonItems = [profileBarButton, channelBtn]
     }
     @objc private func openProfile() {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
-        let profileVC = storyBoard.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController
-        guard let profile = profileVC else {return}
-
-        let navVC = UINavigationController(rootViewController: profile)
+        guard let profileVC = presentationAssembly?.profileController() else { return }
+        let navVC = UINavigationController(rootViewController: profileVC)
         navVC.navigationBar.backgroundColor = UIColor(white: 0.97, alpha: 1)
         navVC.navigationBar.prefersLargeTitles = true
 
@@ -84,14 +85,12 @@ class ConversationsListViewController: UIViewController {
         theme.navigationItem.largeTitleDisplayMode = .never
 
         //делегат и замыкание
-
         theme.themeHandler = { [weak self] color in
             guard let selfVC = self else {return}
             selfVC.view.backgroundColor = color
         }
 
         //theme.delegate = self
-
         self.navigationController?.pushViewController(theme, animated: true)
     }
     @objc private func addChannel() {
@@ -170,7 +169,7 @@ extension ConversationsListViewController: NSFetchedResultsControllerDelegate {
 
         let indexPath = indexPath ?? IndexPath()
         let newIndexPath = newIndexPath ?? IndexPath()
-        
+
         switch type {
         case .insert:
             self.tableView?.insertRows(at: [newIndexPath], with: .automatic)

@@ -15,7 +15,7 @@ class ConversationViewController: UIViewController {
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .plain)
         table.separatorStyle = .none
-        table.backgroundColor = UIColor(white: 0.9, alpha: 1)
+        table.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
         return table
     }()
     private let messageContainer: UIView = {
@@ -41,9 +41,8 @@ class ConversationViewController: UIViewController {
     var channelId: String = ""
     var myId: String = ""
     var model: IConversationModel?
-    var presentationAssembly: IPresentationAssembly?
+    private var emblem: EmblemAnimation?
     private var containerBottomConstraint: NSLayoutConstraint?
-    private var containerHeightConstraint: NSLayoutConstraint?
     private lazy var fetchedResultsController: NSFetchedResultsController<DBMessage>? = {
         let fetchRequest: NSFetchRequest<DBMessage> = DBMessage.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "created", ascending: true)
@@ -60,7 +59,6 @@ class ConversationViewController: UIViewController {
         fetchedResultsController.delegate = self
         return fetchedResultsController
     }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.containerBottomConstraint = NSLayoutConstraint(item: messageContainer,
@@ -77,17 +75,20 @@ class ConversationViewController: UIViewController {
             name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
             name: UIResponder.keyboardWillHideNotification, object: nil)
+        //self.addAnimatioin()
     }
-    
+    private func addAnimatioin(){
+        self.emblem = EmblemAnimation(view: self.view)
+    }
     private func fetchMessages(channelId: String) {
         print(channelId)
+        self.model?.fetchMessages(channelId: channelId)
         do {
             try fetchedResultsController?.performFetch()
             tableView.reloadData()
         } catch {
             print("fetching messages error -> \(error.localizedDescription)")
         }
-        model?.fetchMessages(channelId: channelId)
         print("fetched messages -> \(fetchedResultsController?.fetchedObjects?.count)")
     }
     // UI settings
@@ -150,7 +151,6 @@ class ConversationViewController: UIViewController {
         }
     }
 }
-
 extension ConversationViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let sections = self.fetchedResultsController?.sections else { return 0}
@@ -166,7 +166,6 @@ extension ConversationViewController: UITableViewDataSource, UITableViewDelegate
         return cell
     }
 }
-
 extension ConversationViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -179,7 +178,6 @@ extension ConversationViewController: NSFetchedResultsControllerDelegate {
 
         let indexPath = indexPath ?? IndexPath()
         let newIndexPath = newIndexPath ?? IndexPath()
-        
         switch type {
         case .insert:
             self.tableView.insertRows(at: [newIndexPath], with: .automatic)

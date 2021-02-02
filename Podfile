@@ -7,5 +7,7 @@ target 'TinkoffChat' do
   # Pods for TinkoffChat
 	pod 'Firebase/Firestore'
 	pod 'SwiftLint'
-
+  inherit! :search_paths
+  pod 'Firebase'
+  
 end

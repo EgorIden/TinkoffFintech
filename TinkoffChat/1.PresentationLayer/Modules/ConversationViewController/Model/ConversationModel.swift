@@ -15,7 +15,7 @@ protocol IConversationModel {
     func getContext() -> NSManagedObjectContext
     func sendMessage(senderId: String, channelId: String, message: String)
 }
-class ConversationListModel: IConversationModel {
+class ConversationModel: IConversationModel {
     private var firebaseService: IFirebaseService
     private var coreDataService: ICoreDataService
     init(firebaseService: IFirebaseService, coreDataService: ICoreDataService) {
@@ -27,11 +27,9 @@ class ConversationListModel: IConversationModel {
             print("fetching messages done")
         }
     }
-    
     func getContext() -> NSManagedObjectContext {
         coreDataService.getContext()
     }
-    
     func sendMessage(senderId: String, channelId: String, message: String) {
         firebaseService.sendMessage(senderId: senderId, channelId: channelId, message: message)
     }

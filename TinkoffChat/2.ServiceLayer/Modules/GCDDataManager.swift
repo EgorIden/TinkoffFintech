@@ -8,8 +8,11 @@
 
 import UIKit
 import Foundation
-
-class GCDDataManager {
+protocol IGCDService {
+    func writeData(dataToSave: UserProfile, completion: @escaping (Bool) -> Void)
+    func uploadData(completion: @escaping (UserProfile?) -> Void)
+}
+class GCDDataManager: IGCDService {
 
     let queue: DispatchQueue
     private let writeGroup = DispatchGroup()
@@ -54,14 +57,10 @@ class GCDDataManager {
             let user = UserProfile(name: self.readDataFromFile(filename: "name"),
                                     info: self.readDataFromFile(filename: "info"),
                                     img: UIImage(data: dataImg))
-
-            DispatchQueue.main.async {
-                if self.errors.isEmpty {
-                    print("upload")
-                    completion(user)
-                } else {
-                    completion(nil)
-                }
+            if self.errors.isEmpty {
+                completion(user)
+            } else {
+                completion(nil)
             }
         }
     }
@@ -115,5 +114,4 @@ class GCDDataManager {
             return nil
         }
     }
-
 }

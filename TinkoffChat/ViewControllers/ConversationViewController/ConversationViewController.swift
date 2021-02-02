@@ -7,51 +7,53 @@
 //
 
 import UIKit
+import Firebase
 
 class ConversationViewController: UIViewController {
+    private var messages = [Message]()
+    var channelID: String = ""
+    var myID: String = ""
     
-    //test data
-    private let testData = [
-        MessageCellModel(text: "Good bye!", isOutput: true),
-        MessageCellModel(text: "It’s morning in Tokyo", isOutput: true),
-        MessageCellModel(text: "What is the most popular meal in Japan?", isOutput: false),
-        MessageCellModel(text: "Do you like it?", isOutput: false),
-        MessageCellModel(text: "What is the most popular meal in Japan?", isOutput: false),
-        MessageCellModel(text: "I like it", isOutput: true)]
+    private let fbManager = FirebaseManager()
     
     @IBOutlet weak var tableview: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.tableview.delegate = self
         self.tableview.dataSource = self
         self.tableview.register(ConversationTableViewCell.self, forCellReuseIdentifier: "ConversatioinCell")
         self.tableview.backgroundColor = UIColor(white: 0.9, alpha: 1)
+        navigationItem.largeTitleDisplayMode = .never
+        
+        fbManager.fetchMessages(id: channelID) { [weak self] fetchedMessages in
+            guard let slf = self else{return}
+            slf.messages = fetchedMessages
+            print(fetchedMessages)
+            slf.tableview.reloadData()
+        }
+        
     }
 }
 
-extension ConversationViewController: UITableViewDataSource{
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        1
-    }
-    
+extension ConversationViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        testData.count
+        messages.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let message = testData[indexPath.row]
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ConversatioinCell", for: indexPath) as? ConversationTableViewCell else{return UITableViewCell()}
-        
-        cell.configure(with: message)
+
+        let message = messages[indexPath.row]
+
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ConversatioinCell", for: indexPath) as? ConversationTableViewCell else {return UITableViewCell()}
+
+        cell.configure(with: ConversationTableViewCell.ConfigureationModel.init(message: message, id: myID))
         return cell
     }
 }
 
-extension ConversationViewController: UITableViewDelegate{
+extension ConversationViewController: UITableViewDelegate {
     //
 }

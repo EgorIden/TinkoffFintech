@@ -15,7 +15,7 @@ class ConversationViewController: UIViewController {
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .plain)
         table.separatorStyle = .none
-        table.backgroundColor = UIColor(white: 0.9, alpha: 1)
+        table.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
         return table
     }()
     private let messageContainer: UIView = {
@@ -75,7 +75,7 @@ class ConversationViewController: UIViewController {
             name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
             name: UIResponder.keyboardWillHideNotification, object: nil)
-        self.addAnimatioin()
+        //self.addAnimatioin()
     }
     private func addAnimatioin(){
         self.emblem = EmblemAnimation(view: self.view)

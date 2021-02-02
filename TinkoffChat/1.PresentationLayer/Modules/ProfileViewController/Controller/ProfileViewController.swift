@@ -37,7 +37,7 @@ class ProfileViewController: UIViewController {
             self.imagePicker.delegate = self
             self.profileUserInfoField.delegate = self
             self.setDefaultMode()
-            self.addAnimation()
+            //self.addAnimation()
             self.model?.uploadData(completion: { user in
                 if let user = user {
                     self.profileUserName.text = user.name
@@ -114,11 +114,11 @@ class ProfileViewController: UIViewController {
         // Edit btn
         @IBAction func editBtn(_ sender: Any) {
             if animationTap {
-                self.editBtnAnimation(tap: animationTap)
+                //self.editBtnAnimation(tap: animationTap)
                 self.editBtnTap(isEdit: animationTap)
                 animationTap = !animationTap
             } else {
-                self.editBtnAnimation(tap: animationTap)
+                //self.editBtnAnimation(tap: animationTap)
                 self.editBtnTap(isEdit: animationTap)
                 animationTap = !animationTap
             }

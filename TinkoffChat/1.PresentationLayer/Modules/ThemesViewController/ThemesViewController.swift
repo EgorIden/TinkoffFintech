@@ -51,7 +51,7 @@ class ThemesViewController: UIViewController {
         self.classicLbl.addGestureRecognizer(classicGesture)
         self.dayLbl.addGestureRecognizer(dayGesture)
         self.nightLbl.addGestureRecognizer(nightGesture)
-        self.addAnimatioin()
+        //self.addAnimatioin()
         //print(classicBtn.currentTitle, dayBtn.currentTitle, nightBtn.currentTitle)
     }
     private func addAnimatioin(){

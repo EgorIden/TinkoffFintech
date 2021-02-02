@@ -107,7 +107,6 @@ Moscow, Russia</string>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="saveBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CyT-Xv-zcc"/>
-                                    <action selector="saveBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Feu-vS-DpN"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="NNE-pn-atZ">

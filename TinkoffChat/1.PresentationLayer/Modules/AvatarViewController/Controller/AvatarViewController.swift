@@ -28,7 +28,7 @@ class AvatarViewController: UIViewController, IAvatarModelDelegate {
         super.viewDidLoad()
         self.setupViews()
         self.model?.fetchURL()
-        self.addAnimatioin()
+        //self.addAnimatioin()
     }
     private func addAnimatioin(){
         self.emblem = EmblemAnimation(view: self.view)

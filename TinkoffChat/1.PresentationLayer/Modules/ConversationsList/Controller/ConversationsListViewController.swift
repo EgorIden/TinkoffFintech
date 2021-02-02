@@ -38,7 +38,7 @@ var model: IConversationsModel?
         self.tableView.dataSource = self
         self.setupBarButtons()
         self.fetchChannels()
-        self.addAnimatioin()
+        //self.addAnimatioin()
     }
     private func addAnimatioin() {
         self.emblem = EmblemAnimation(view: self.view)

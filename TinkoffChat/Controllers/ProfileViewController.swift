@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profileUresInfo: UILabel!
     @IBOutlet weak var saveProfileButton: UIButton!
     
+    
     private let imagePicker = UIImagePickerController()
     
     required init?(coder: NSCoder) {
@@ -56,6 +57,11 @@ class ProfileViewController: UIViewController {
     @IBAction func saveProfileButton(_ sender: Any) {
         
     }
+    
+    @IBAction func closeButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     private func presentActionSheet(){
         //В консоли может появляться ошибка констрейнов

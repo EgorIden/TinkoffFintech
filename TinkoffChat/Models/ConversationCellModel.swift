@@ -16,7 +16,7 @@ struct ConversationCellModel {
     let isOnline: Bool
     let hasUnreadedMessages: Bool
     
-    init(channel: Channel) {
+    init(channel: DBChannel) {
         self.name = channel.name
         self.message = channel.lastMessage ?? "No message"
         if let lastActivity = channel.lastActivity{
@@ -31,5 +31,4 @@ struct ConversationCellModel {
         }
         self.hasUnreadedMessages = isOnline
     }
-    
 }
